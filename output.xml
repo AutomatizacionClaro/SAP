@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.8.0 on win32)" generated="20230915 16:30:08.020" rpa="false" schemaversion="4">
+<suite id="s1" name="SAP" source="d:\WORKSPACE SAP COLOMBIA\SAP\TestCases\SAP.robot">
+<test id="s1-t1" name="PROCESO SAP" line="6">
+<kw name="abrir_sap" library="abrirSAP">
+<kw name="Launch Application" library="WhiteLibrary">
+<arg>saplogon.exe</arg>
+<doc>Launches an application.</doc>
+<status status="PASS" starttime="20230915 16:30:08.824" endtime="20230915 16:30:09.036"/>
+</kw>
+<status status="PASS" starttime="20230915 16:30:08.824" endtime="20230915 16:30:09.036"/>
+</kw>
+<kw name="login_sap" library="loginSAP">
+<kw name="LimpiarScreenshots" library="Script">
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>Images</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20230915 16:30:09.036" level="INFO" html="true">Listing contents of directory '&lt;a href="file://D:\WORKSPACE SAP COLOMBIA\SAP\Images"&gt;D:\WORKSPACE SAP COLOMBIA\SAP\Images&lt;/a&gt;'.</msg>
+<msg timestamp="20230915 16:30:09.036" level="FAIL">Directory 'D:\WORKSPACE SAP COLOMBIA\SAP\Images' is not empty.</msg>
+<msg timestamp="20230915 16:30:09.053" level="INFO">whitelib_screenshot_1.png</msg>
+<msg timestamp="20230915 16:30:09.053" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="whitelib_screenshot_1.png"&gt;&lt;img src="whitelib_screenshot_1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="FAIL" starttime="20230915 16:30:09.036" endtime="20230915 16:30:09.053"/>
+</kw>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>Images</arg>
+<doc>Creates the specified directory.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.105" endtime="20230915 16:30:09.105"/>
+</kw>
+<msg timestamp="20230915 16:30:09.105" level="INFO">whitelib_screenshot_2.png</msg>
+<msg timestamp="20230915 16:30:09.105" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="whitelib_screenshot_2.png"&gt;&lt;img src="whitelib_screenshot_2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="FAIL" starttime="20230915 16:30:09.036" endtime="20230915 16:30:09.105"/>
+</kw>
+<kw name="Launch Application" library="WhiteLibrary">
+<arg>saplogon.exe</arg>
+<doc>Launches an application.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Screenshot" library="Script">
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${Conteo}</var>
+<value>0</value>
+<value>99999999</value>
+<iter>
+<var name="${Conteo}"/>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Login}</var>
+<arg>RPA.SAP.Connect To Session</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${Login}== True</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</iter>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</for>
+<kw name="Open Connection" library="RPA.SAP">
+<arg>SAP</arg>
+<doc>Opens a connection to the given connection name. Be sure to provide the full connection name, including the bracket part.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${nvaLoginSAP}${txtUsuario}</arg>
+<arg>${usuarioSAP}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Screenshot" library="Script">
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Input Password" library="RPA.SAP">
+<arg>${nvaLoginSAP}${txtClave}</arg>
+<arg>${claveSAP}</arg>
+<doc>Inserts the given password into the text field identified by locator.
+The password is not recorded in the log.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Screenshot" library="Script">
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Click Element" library="RPA.SAP">
+<arg>${nvaLoginSAP}${btnLogin}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Screenshot" library="Script">
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Select Radio Button" library="RPA.SAP">
+<arg>${vnaSesionAbierta}${rbtnOpcionDos}</arg>
+<doc>Sets radio button to the specified value.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Screenshot" library="Script">
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Click Element" library="RPA.SAP">
+<arg>${vnaSesionAbierta}${btnCheckOK}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<kw name="Screenshot" library="Script">
+<status status="NOT RUN" starttime="20230915 16:30:09.139" endtime="20230915 16:30:09.139"/>
+</kw>
+<msg timestamp="20230915 16:30:09.139" level="INFO">whitelib_screenshot_3.png</msg>
+<msg timestamp="20230915 16:30:09.139" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="whitelib_screenshot_3.png"&gt;&lt;img src="whitelib_screenshot_3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="FAIL" starttime="20230915 16:30:09.036" endtime="20230915 16:30:09.139"/>
+</kw>
+<status status="FAIL" starttime="20230915 16:30:08.824" endtime="20230915 16:30:09.186">Directory 'D:\WORKSPACE SAP COLOMBIA\SAP\Images' is not empty.</status>
+</test>
+<status status="FAIL" starttime="20230915 16:30:08.029" endtime="20230915 16:30:09.186"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="SAP">SAP</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
