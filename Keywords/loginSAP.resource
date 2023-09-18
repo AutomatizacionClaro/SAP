@@ -21,10 +21,15 @@ login_sap
     RPA.SAP.Input Password  ${nvaLoginSAP}${txtClave}  ${claveSAP}
     #Screenshot
     RPA.SAP.Click Element  ${nvaLoginSAP}${btnLogin}
-    #Screenshot  
+    # Validación segunda ventana
+    IF    ${True}
     RPA.SAP.Select Radio Button  ${vnaSesionAbierta}${rbtnOpcionDos}
-    #Screenshot
     RPA.SAP.Click Element  ${vnaSesionAbierta}${btnCheckOK}
+    ELSE
+    Log     ${mensajeLoginSAP2}    console=True
+    END
+    #Screenshot  
+    #Screenshot
     #Screenshot
 
     
