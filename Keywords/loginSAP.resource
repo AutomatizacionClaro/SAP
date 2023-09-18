@@ -1,29 +1,30 @@
 *** Settings ***
 Library  RPA.SAP
-Library  WhiteLibrary
+#Library  WhiteLibrary
+Library  RPA.Windows
 Library    Screenshot    ..\\SAP\\Images
+Library    RPA.JavaAccessBridge
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
 
 *** Keywords ***
 login_sap
-    
-    WhiteLibrary.Launch Application   saplogon.exe
-    Screenshot
+    #Screenshot
     FOR  ${Conteo}  IN RANGE  0  99999999
         ${Login}=  Run Keyword And Return Status  RPA.SAP.Connect To Session
         Exit For Loop If    ${Login}== True
     END
-    RPA.SAP.Open Connection  SAP    
+    RPA.SAP.Open Connection  SAP EQA
     RPA.SAP.Input Text  ${nvaLoginSAP}${txtUsuario}  ${usuarioSAP}
-    Screenshot
+    #Screenshot
     RPA.SAP.Input Password  ${nvaLoginSAP}${txtClave}  ${claveSAP}
-    Screenshot
+    #Screenshot
     RPA.SAP.Click Element  ${nvaLoginSAP}${btnLogin}
-    Screenshot
+    #Screenshot  
     RPA.SAP.Select Radio Button  ${vnaSesionAbierta}${rbtnOpcionDos}
-    Screenshot
+    #Screenshot
     RPA.SAP.Click Element  ${vnaSesionAbierta}${btnCheckOK}
-    Screenshot
+    #Screenshot
+
     
