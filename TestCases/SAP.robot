@@ -7,4 +7,4 @@ Resource    ../Keywords/transaction_mb52.resource
 PROCESO SAP
     abrir_sap
     login_sap
-    transaccion_mb52    7005695
+    transaccion_mb52    70038158  C127

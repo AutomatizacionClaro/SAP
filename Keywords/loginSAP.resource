@@ -2,8 +2,6 @@
 Library  RPA.SAP
 #Library  WhiteLibrary
 Library  RPA.Windows
-Library    Screenshot    ..\\SAP\\Images
-Library    RPA.JavaAccessBridge
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
@@ -21,12 +19,12 @@ login_sap
     RPA.SAP.Input Password  ${nvaLoginSAP}${txtClave}  ${claveSAP}
     #Screenshot
     RPA.SAP.Click Element  ${nvaLoginSAP}${btnLogin}
-    # Validación segunda ventana
+    # Validación segunda autenticación -- realiza el cambio Alejo
     IF    ${True}
     RPA.SAP.Select Radio Button  ${vnaSesionAbierta}${rbtnOpcionDos}
     RPA.SAP.Click Element  ${vnaSesionAbierta}${btnCheckOK}
     ELSE
-    Log     ${mensajeLoginSAP2}    console=True
+    Log     No realiza segunda validación autenticación login SAP    console=True
     END
     #Screenshot  
     #Screenshot

@@ -11,5 +11,6 @@ ${txtTransaccion}    ${nvaLoginSAP}/tbar[0]/okcd
 ${btnCheckTransaccion}    ${nvaLoginSAP}/tbar[0]/btn[0]
 # Ventana MB52
 ${txtMaterialMb52}    ${nvaLoginSAP}/usr/ctxtMATNR-LOW
+${txtCentroMb52}    ${nvaLoginSAP}/usr/ctxtWERKS-LOW
 ${btnValidarStock}    ${nvaLoginSAP}/tbar[1]/btn[8]
 
