@@ -13,4 +13,8 @@ ${btnCheckTransaccion}    ${nvaLoginSAP}/tbar[0]/btn[0]
 ${txtMaterialMb52}    ${nvaLoginSAP}/usr/ctxtMATNR-LOW
 ${txtCentroMb52}    ${nvaLoginSAP}/usr/ctxtWERKS-LOW
 ${btnValidarStock}    ${nvaLoginSAP}/tbar[1]/btn[8]
+#Ventana ME21N
+#${pedidoTrasladoMe21n}    ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-NETPR[14,4]
+${pedidoTrasladoMe21n}    /usr/subSUB0:SAPLMEGUI:0013/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/cmbMEPO_TOPLINE-BSART
+
 
