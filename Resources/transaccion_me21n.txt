@@ -1,0 +1,8 @@
+Transacción ME21N - Traslado material de un CAV a un punto directo
+
+ A continuación se indican los siguientes datos del proceso de traslado:
+
+ Centro Origen - C108
+ Org.Compras: CO06 - Comunicación Celular
+ GrupoCompras: T13 - HANDSETS
+ Sociedad: CO06 - Comunicación celular S.A

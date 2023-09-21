@@ -13,4 +13,4 @@ Transaccion MB52 - Validar Stock SAP
 Transaccion ME21N - Traslado Material SAP
     abrir_sap
     login_sap
-    transaccion_me21n
+    transaccion_me21n    C108  CO06  T13  CO06  70047935  1  C100
