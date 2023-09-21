@@ -4,6 +4,7 @@
 Library  RPA.SAP
 #Library  WhiteLibrary
 Library  RPA.Windows
+Library    Screenshot    ..\\SAP\\Images
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
