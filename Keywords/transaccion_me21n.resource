@@ -6,6 +6,7 @@ Library  RPA.SAP
 Library  RPA.Windows
 Library    Screenshot    ..\\SAP\\Images
 Library    RPA.FileSystem
+Library    RPA.Desktop
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
@@ -51,6 +52,7 @@ transaccion_me21n
     RPA.Windows.Send Keys    keys={ENTER}
     Sleep    2
     ${txtNumeroPedidoSAP}=  RPA.SAP.Get Value  ${numeroPedidoSAP}
+    RPA.Desktop.Press Keys  shift  F5
     Sleep    1 
     RPA.FileSystem.Create File    ..\\SAP\\Resources\\transaccion_me21n.txt    
     ...    content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}       

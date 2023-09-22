@@ -11,4 +11,4 @@ Transacción ME21N - Traslado material de un CAV a un punto directo
 
  Ejecución exitosa!
 
- Pedido de traspaso creado bajo el número 4201367369
+ Pedido de traspaso creado bajo el número 4201367371
