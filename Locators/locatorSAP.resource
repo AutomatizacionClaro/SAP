@@ -12,7 +12,6 @@ ${txtTransaccion}          ${nvaLoginSAP}/tbar[0]/okcd
 ${btnCheckTransaccion}     ${nvaLoginSAP}/tbar[0]/btn[0]
 # Grabar
 ${btnGrabarTransaccion}     ${nvaLoginSAP}/tbar[0]/btn[11]
-#${btnConfirmacionGrabacion}    ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0010/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-TXZ01[5,0]
 
 # Ventana MB52
 ${txtMaterialMb52}    ${nvaLoginSAP}/usr/ctxtMATNR-LOW
@@ -34,7 +33,8 @@ ${filaCantidadPedido}          ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2
 ${filaLote}                    ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-CHARG[8,0]
 ${filaCavDestino}              ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[10,0]
 ${filaAlmacen}                 ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-LGOBE[11,0]
-#Ventana ME21N Tabla datos cav destrino
+#Ventana ME21N Tabla datos cav destino
 ${filaDireccionCavDestino}     ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0010/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1330/ssubADDRESS:SAPLMMDA:0200/ssubADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-NAME1
+${numeroPedidoSAP}              /app/con[0]/ses[0]/wnd[0]/sbar/pane[0]
 
 

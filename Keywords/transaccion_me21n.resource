@@ -45,15 +45,15 @@ transaccion_me21n
     RPA.SAP.Input Text    ${filaCavDestino}  ${centroDestinoMaterial}  #C100
     RPA.SAP.Input Text    ${filaAlmacen}        ${almacen}
     RPA.Windows.Send Keys    keys={ENTER}
-    Sleep    3
-    #${textoCavOrigen} =     RPA.SAP.Get Value    ${centroSuministradoME21N} 
+    Sleep    3 
     ${textoCavDestino} =     RPA.SAP.Get Value    ${filaDireccionCavDestino}
     RPA.SAP.Click Element    ${btnGrabarTransaccion} 
-    #RPA.Windows.Send Keys    keys={ENTER}
-    #RPA.SAP.Click Element    ${btnConfirmacionGrabacion}
-    Sleep    3 
+    RPA.Windows.Send Keys    keys={ENTER}
+    Sleep    2
+    ${txtNumeroPedidoSAP}=  RPA.SAP.Get Value  ${numeroPedidoSAP}
+    Sleep    1 
     RPA.FileSystem.Create File    ..\\SAP\\Resources\\transaccion_me21n.txt    
-    ...    content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa       
+    ...    content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}       
     ...    encoding=utf-8    overwrite=True
 
 

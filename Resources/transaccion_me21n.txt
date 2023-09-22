@@ -9,4 +9,6 @@ Transacción ME21N - Traslado material de un CAV a un punto directo
  CodigoMaterial: 70047935
  CantidadPedidoMaterial: 1
 
- Ejecución exitosa
+ Ejecución exitosa!
+
+ Pedido de traspaso creado bajo el número 4201367369
