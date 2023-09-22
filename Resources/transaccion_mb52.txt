@@ -1,0 +1,5 @@
+Transacción Mb52 - Validación de Stock
+
+ CódigoMaterial: 70038158
+ CAV: C127
+ LibreUtilización:              5

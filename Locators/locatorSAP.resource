@@ -14,9 +14,11 @@ ${btnCheckTransaccion}     ${nvaLoginSAP}/tbar[0]/btn[0]
 ${btnGrabarTransaccion}     ${nvaLoginSAP}/tbar[0]/btn[11]
 
 # Ventana MB52
-${txtMaterialMb52}    ${nvaLoginSAP}/usr/ctxtMATNR-LOW
-${txtCentroMb52}    ${nvaLoginSAP}/usr/ctxtWERKS-LOW
-${btnValidarStock}    ${nvaLoginSAP}/tbar[1]/btn[8]
+${txtMaterialMb52}             ${nvaLoginSAP}/usr/ctxtMATNR-LOW
+${txtCentroMb52}               ${nvaLoginSAP}/usr/ctxtWERKS-LOW
+${btnValidarStock}             ${nvaLoginSAP}/tbar[1]/btn[8]
+# Visualizar Stock MB52
+${txtLibreUtilizado}           ${nvaLoginSAP}/usr/lbl[62,7]
 
 #Ventana ME21N
 ${pedidoTrasladoME21N}         ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-NETPR[14,4]
