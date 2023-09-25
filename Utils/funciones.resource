@@ -13,10 +13,10 @@ Resource    ../Scripts/Script.resource
 *** Keywords ***
 CANTIDAD_CLICK_ELEMENTO
 
-    [Arguments]    ${cantTabs}  ${elementoLocalizador}
+    [Arguments]    ${cantClicks}  ${rutaElemento}
 
-        FOR  ${i}  IN RANGE  0  ${cantTabs}
-            RPA.SAP.Click Element    ${elementoLocalizador}
+        FOR  ${i}  IN RANGE  0  ${cantClicks}
+            RPA.SAP.Click Element    ${rutaElemento}
             Sleep  1s      
-            Exit For Loop If    ${i} == ${CantTabs}
+            Exit For Loop If    ${i} == ${CantClicks}
         END
