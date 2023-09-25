@@ -54,4 +54,18 @@ RPA Validación y Traslado del material
         RPA.Windows.Send Keys    keys={ENTER}
         Sleep    3
         ${textoCavDestino} =    RPA.SAP.Get Value    ${filaDireccionCavDestino}
+        RPA.SAP.Click Element    ${btnGrabarTransaccion}
+        RPA.Windows.Send Keys    keys={ENTER}
+        Sleep    2
+        ${txtNumeroPedidoSAP} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
+        RPA.Desktop.Press Keys    shift    F5
+        Sleep    1
+        ${txtIdNumeroPedidoSAP} =    RPA.SAP.Get Value    ${numIdPedidoSAP}
+        Log    ${txtIdNumeroPedidoSAP}    console=True
+        Sleep    1
+        RPA.FileSystem.Create File
+        ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
+        ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}
+        ...    encoding=utf-8
+        ...    overwrite=True
     END
