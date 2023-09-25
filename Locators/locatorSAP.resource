@@ -18,10 +18,10 @@ ${txtMaterialMb52}             ${nvaLoginSAP}/usr/ctxtMATNR-LOW
 ${txtCentroMb52}               ${nvaLoginSAP}/usr/ctxtWERKS-LOW
 ${btnValidarStock}             ${nvaLoginSAP}/tbar[1]/btn[8]
 # Visualizar Stock MB52
-${txtLibreUtilizado}           ${nvaLoginSAP}/usr/lbl[62,7]
+${txtLibreUtilizado}           ${nvaLoginSAP}/usr/lbl[73,5]
 
 #Ventana ME21N
-${pedidoTrasladoME21N}         ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-NETPR[14,4]
+${pedidoTrasladoME21N}         ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/cmbMEPO_TOPLINE-BSART
 ${centroSuministradoME21N}     ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD
 ${orgCompraME21N}              ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKORG
 ${valorOrgCompraME21N}         ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/txtMEPO1222-EKOTX
@@ -37,6 +37,8 @@ ${filaCavDestino}              ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2
 ${filaAlmacen}                 ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-LGOBE[11,0]
 #Ventana ME21N Tabla datos cav destino
 ${filaDireccionCavDestino}     ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0010/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1330/ssubADDRESS:SAPLMMDA:0200/ssubADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-NAME1
-${numeroPedidoSAP}              /app/con[0]/ses[0]/wnd[0]/sbar/pane[0]
+${panelNumeroPedidoSAP}              /app/con[0]/ses[0]/wnd[0]/sbar/pane[0]
+${numIdPedidoSAP}              /app/con[0]/ses[0]/wnd[1]/usr/subSUB0:SAPLMEGUI:0003/ctxtMEPO_SELECT-EBELN
+
 
 

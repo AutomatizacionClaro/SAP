@@ -1,11 +1,11 @@
 # Validación stock del material transacción MB52
 
 *** Settings ***
-Library  RPA.SAP
+Library     RPA.SAP
 #Library  WhiteLibrary
-Library  RPA.Windows
-Library    RPA.FileSystem
-Library    Screenshot    ..\\SAP\\Images
+Library     RPA.Windows
+Library     RPA.FileSystem
+Library     Screenshot    ..\\SAP\\Images
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
