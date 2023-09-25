@@ -10,6 +10,7 @@ ${btnCheckOK}    /tbar[0]/btn[0]
 # Ventana Selección transacción
 ${txtTransaccion}          ${nvaLoginSAP}/tbar[0]/okcd
 ${btnCheckTransaccion}     ${nvaLoginSAP}/tbar[0]/btn[0]
+${btnAtras}                ${nvaLoginSAP}/tbar[0]/btn[3]
 # Grabar
 ${btnGrabarTransaccion}     ${nvaLoginSAP}/tbar[0]/btn[11]
 
