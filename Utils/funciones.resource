@@ -3,9 +3,9 @@
 Library     RPA.SAP
 #Library  WhiteLibrary
 Library     RPA.Windows
+Library     RPA.Desktop
 Library     Screenshot    ..\\SAP\\Images
 Library     RPA.FileSystem
-Library     RPA.Desktop
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
@@ -20,3 +20,10 @@ CANTIDAD_CLICK_ELEMENTO
             Sleep  1s      
             Exit For Loop If    ${i} == ${CantClicks}
         END
+
+CERRAR_APLICATIVO_SAP
+    RPA.Desktop.Press Keys    alt  F4
+    RPA.Desktop.Press Keys    tab
+    Sleep  1s 
+    RPA.Desktop.Press Keys    tab
+    RPA.Desktop.Press Keys    enter
