@@ -22,10 +22,14 @@ RPA Validación y Traslado del material
     ...    ${centroOrigenMaterial}    ${orgCompras}    ${grupoCompras}    ${sociedad}
     ...    ${cantidadPedidoMaterial}    ${centroDestinoMaterial}
     RPA.Windows.Send Keys    keys=${transaccionMB52}
+    Sleep    1
     RPA.SAP.Click Element    ${btnCheckTransaccion}
     RPA.SAP.Input Text    ${txtMaterialMb52}    ${codigoMaterial}
+    Sleep    1
     RPA.SAP.Input Text    ${txtCentroMb52}    ${centroOrigenMaterial}
+    Sleep    1
     RPA.SAP.Click Element    ${btnValidarStock}
+    Sleep    1
     ${txtLibreUtilizacion} =    RPA.SAP.Get Value    ${txtLibreUtilizado}
     IF    ${txtLibreUtilizacion} != "0"
         CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
@@ -35,24 +39,32 @@ RPA Validación y Traslado del material
         Sleep    2
         # Lista carrito Pedido_traslado
         RPA.SAP.Select From List By Label    ${pedidoTrasladoME21N}    ${pedidoTraslado}
+        Sleep    1
         RPA.SAP.Input Text    ${centroSuministradoME21N}    ${centroOrigenMaterial}    # C108
         RPA.Windows.Send Keys    keys={ENTER}
+        Sleep    1
         RPA.SAP.Input Text    ${orgCompraME21N}    ${orgCompras}    # CO06
         Sleep    1
         RPA.SAP.Input Text    ${grupoComprasME21N}    ${grupoCompras}    # T13
         Sleep    1
         RPA.SAP.Input Text    ${sociedadME21N}    ${sociedad}    # CO06
+        Sleep    1
         RPA.Windows.Send Keys    keys={ENTER}
         ${textoOrgCompra} =    RPA.SAP.Get Value    ${valorOrgCompraME21N}
         ${textoGrupoCompra} =    RPA.SAP.Get Value    ${valorGrupoComprasME21N}
         ${textoSociedad} =    RPA.SAP.Get Value    ${valorSociedadME21N}
         RPA.SAP.Input Text    ${filaCodigoMaterial}    ${codigoMaterial}    # 70047935
+        Sleep    1
         RPA.SAP.Input Text    ${filaCantidadPedido}    ${cantidadPedidoMaterial}    # 1
+        Sleep    1
         RPA.SAP.Input Text    ${filaLote}    ${lote}
+        Sleep    1
         RPA.SAP.Input Text    ${filaCavDestino}    ${centroDestinoMaterial}    # C100
+        Sleep    1
         RPA.SAP.Input Text    ${filaAlmacen}    ${almacen}
+        Sleep    1
         RPA.Windows.Send Keys    keys={ENTER}
-        Sleep    3
+        Sleep    2
         ${textoCavDestino} =    RPA.SAP.Get Value    ${filaDireccionCavDestino}
         RPA.SAP.Click Element    ${btnGrabarTransaccion}
         RPA.Windows.Send Keys    keys={ENTER}
@@ -68,4 +80,7 @@ RPA Validación y Traslado del material
         ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}
         ...    encoding=utf-8
         ...    overwrite=True
+        RPA.Desktop.Press Keys    alt  F4
+        Sleep    1
+        CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
     END

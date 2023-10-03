@@ -11,4 +11,4 @@ Transacción ME21N - Traslado material de un CAV a un punto directo
 
  Ejecución exitosa!
 
- Pedido de traslado creado bajo el número 4500595032
+ Pedido de traslado creado bajo el número 4500595059
