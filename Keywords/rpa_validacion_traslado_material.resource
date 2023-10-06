@@ -16,6 +16,7 @@ Resource    ../Scripts/Script.resource
 Resource    ../Utils/funciones.resource
 
 
+
 *** Keywords ***
 RPA Validación y Traslado del material
     [Arguments]    ${codigoMaterial}
@@ -80,7 +81,15 @@ RPA Validación y Traslado del material
         ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}
         ...    encoding=utf-8
         ...    overwrite=True
-        RPA.Desktop.Press Keys    alt  F4
+        RPA.Desktop.Press Keys    alt    F4
         Sleep    1
         CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
+    ELSE
+        RPA.FileSystem.Create File
+        ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
+        ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\nMaterial sin STOCK!
+        ...    encoding=utf-8
+        ...    overwrite=True
+        CERRAR_APLICATIVO_SAP
+        Sleep    1
     END
