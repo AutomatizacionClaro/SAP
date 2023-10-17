@@ -1,12 +1,10 @@
 *** Comments ***
-# Validación traslado del material transacción ME21N
+Inicio traslado del material transacción ME21N
 
 
 *** Settings ***
 Library     RPA.SAP
-# Library    WhiteLibrary
 Library     RPA.Windows
-Library     Screenshot    ..\\SAP\\Images
 Library     RPA.FileSystem
 Library     RPA.Desktop
 Resource    ../Variables/Constantes.resource
@@ -21,41 +19,49 @@ transaccion_me21n
     ...    ${codigoMaterial}    ${cantidadPedidoMaterial}    ${centroDestinoMaterial}
     RPA.Windows.Send Keys    keys=${transaccionME21N}
     RPA.SAP.Click Element    ${btnCheckTransaccion}
+    CapturaPantalla
     Sleep    2
     # Lista carrito Pedido_traslado
     RPA.SAP.Select From List By Label    ${pedidoTrasladoME21N}    ${pedidoTraslado}
-    RPA.SAP.Input Text    ${centroSuministradoME21N}    ${centroOrigenMaterial}    # C108
+    RPA.SAP.Input Text    ${centroSuministradoME21N}    ${centroOrigenMaterial}
+    CapturaPantalla
     Sleep    1
     RPA.Windows.Send Keys    keys={ENTER}
-    RPA.SAP.Input Text    ${orgCompraME21N}    ${orgCompras}    # CO06
+    RPA.SAP.Input Text    ${orgCompraME21N}    ${orgCompras}
     Sleep    1
-    RPA.SAP.Input Text    ${grupoComprasME21N}    ${grupoCompras}    # T13
+    RPA.SAP.Input Text    ${grupoComprasME21N}    ${grupoCompras}
     Sleep    1
-    RPA.SAP.Input Text    ${sociedadME21N}    ${sociedad}    # CO06
+    RPA.SAP.Input Text    ${sociedadME21N}    ${sociedad}
     Sleep    1
     RPA.Windows.Send Keys    keys={ENTER}
+    CapturaPantalla
     ${textoOrgCompra} =    RPA.SAP.Get Value    ${valorOrgCompraME21N}
     ${textoGrupoCompra} =    RPA.SAP.Get Value    ${valorGrupoComprasME21N}
     ${textoSociedad} =    RPA.SAP.Get Value    ${valorSociedadME21N}
-    RPA.SAP.Input Text    ${filaCodigoMaterial}    ${codigoMaterial}    # 70047935
+    RPA.SAP.Input Text    ${filaCodigoMaterial}    ${codigoMaterial}
     Sleep    1
-    RPA.SAP.Input Text    ${filaCantidadPedido}    ${cantidadPedidoMaterial}    # 1
+    RPA.SAP.Input Text    ${filaCantidadPedido}    ${cantidadPedidoMaterial}
     Sleep    1
     RPA.SAP.Input Text    ${filaLote}    ${lote}
+    CapturaPantalla
     Sleep    1
-    RPA.SAP.Input Text    ${filaCavDestino}    ${centroDestinoMaterial}    # C100
+    RPA.SAP.Input Text    ${filaCavDestino}    ${centroDestinoMaterial}
     Sleep    1
     RPA.SAP.Input Text    ${filaAlmacen}    ${almacen}
     Sleep    1
     RPA.Windows.Send Keys    keys={ENTER}
+    CapturaPantalla
     Sleep    2
     ${textoCavDestino} =    RPA.SAP.Get Value    ${filaDireccionCavDestino}
     RPA.SAP.Click Element    ${btnGrabarTransaccion}
+    CapturaPantalla
     Sleep    1
     RPA.Windows.Send Keys    keys={ENTER}
+    CapturaPantalla
     Sleep    2
     ${txtNumeroPedidoSAP} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
     RPA.Desktop.Press Keys    shift    F5
+    CapturaPantalla
     Sleep    1
     ${txtIdNumeroPedidoSAP} =    RPA.SAP.Get Value    ${numIdPedidoSAP}
     Log    ${txtIdNumeroPedidoSAP}    console=True
@@ -66,6 +72,7 @@ transaccion_me21n
     ...    encoding=utf-8
     ...    overwrite=True
     RPA.Desktop.Press Keys    alt    F4
+    CapturaPantalla
     Sleep    1
     CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
     CERRAR_APLICATIVO_SAP

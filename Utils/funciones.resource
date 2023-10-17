@@ -1,14 +1,9 @@
 
 *** Settings ***
 Library     RPA.SAP
-#Library  WhiteLibrary
-Library     RPA.Windows
 Library     RPA.Desktop
-Library     Screenshot    ..\\SAP\\Images
-Library     RPA.FileSystem
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
-Resource    ../Scripts/Script.resource
 
 *** Keywords ***
 CANTIDAD_CLICK_ELEMENTO
@@ -24,6 +19,6 @@ CANTIDAD_CLICK_ELEMENTO
 CERRAR_APLICATIVO_SAP
     RPA.Desktop.Press Keys    alt  F4
     RPA.Desktop.Press Keys    tab
-    Sleep  1s 
+    Sleep  2s 
     RPA.Desktop.Press Keys    tab
     RPA.Desktop.Press Keys    enter

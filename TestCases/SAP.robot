@@ -6,6 +6,10 @@ Resource    ../Keywords/transaccion_me21n.resource
 Resource    ../Keywords/rpa_validacion_traslado_material.resource
 
 *** Test Cases ***
+Autenticacion Login SAP
+  abrir_sap
+  login_sap
+
 Transaccion MB52 - Validar Stock SAP
 # Inserta: Código del material - CAV
     abrir_sap

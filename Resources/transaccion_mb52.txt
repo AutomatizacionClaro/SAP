@@ -1,3 +1,5 @@
 Transacción MB52 - Validación de Stock
 
- Error en la ejecución, No existe ninguna entrada correspondiente a la entrada en el campo Material
+ CódigoMaterial: 70047935
+ CAV: C108
+ LibreUtilización:              4

@@ -1,6 +1,4 @@
 ***settings***
-Library    RPA.SAP
-Library    Screenshot    ..\\SAP\\Images
 #Library  WhiteLibrary
 Library    RPA.Windows
 
