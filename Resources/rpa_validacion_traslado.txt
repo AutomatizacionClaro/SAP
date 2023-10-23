@@ -14,9 +14,14 @@ Inicio traslado material - ME21N
  CodigoMaterial: 70048076
  CantidadPedidoMaterial: 1
 
- Pedido de traslado creado bajo el número 4500595170
+ PEDIDO DE TRASLADO creado bajo el número 4201367427
 
 
  Inicio Pedidos De Compras - VL10B
  Pto.expedic/Pto.recepción: C108
- DocumentoCompra: 4500595170
+ DocumentoCompra: 4201367427
+
+ NÚMERO DOCUMENTO COMERCIAL: 2101621235
+
+
+ Entr.Traslado 2101621235 - VL02N

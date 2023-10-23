@@ -27,7 +27,7 @@ Transaccion VL10B - Pedidos de compras
 # por completar
     abrir_sap
     login_sap
-    transaccion_vl10b    C108  4500595167
+    transaccion_vl10b    C108  4201367423
 
 RPA Validación Stock y Traslado del material
 # Inserta: codigo_material - CAV_origen - Org_compras - grupo_compras - sociedad - cantidad_pedido - CAV_destino

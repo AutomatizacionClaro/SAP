@@ -45,4 +45,10 @@ ${numIdPedidoSAP}              /app/con[0]/ses[0]/wnd[1]/usr/subSUB0:SAPLMEGUI:0
 ${txtPtoExpedicPtoRecepcionVL10B}    ${nvaLoginSAP}/usr/ctxtST_VSTEL-LOW
 ${tablaPedidosComprasVL10B}          ${nvaLoginSAP}/usr/tabsTABSTRIP_ORDER_CRITERIA/tabpS0S_TAB5
 ${txtDocumentoComprasVL10B}    ${nvaLoginSAP}/usr/tabsTABSTRIP_ORDER_CRITERIA/tabpS0S_TAB5/ssub%_SUBSCREEN_ORDER_CRITERIA:RVV50R10C:1030/ctxtST_EBELN-LOW
+${btnFondoVL10B}               ${nvaLoginSAP}/tbar[1]/btn[19]
+${btnVisualizarSuprimirEntregasVL10B}               ${nvaLoginSAP}/tbar[1]/btn[20]
+${idTransaccionVL10B}         /app/con[0]/ses[0]/wnd[0]/usr/subSUBSCREEN_HEADER:SAPMV50A:1502/ctxtLIKP-VBELN
+
+# Ventana VL02N
+${txtEntregaSalidaVL02N}    ${nvaLoginSAP}/usr/ctxtLIKP-VBELN
 

@@ -85,7 +85,7 @@ RPA Validación y Proceso de traslado del material
         # INICIO PEDIDO DE COMPRAS - VL10B
         CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
         RPA.Windows.Send Keys    keys=${transaccionVL10B}
-         Sleep    1
+        Sleep    1
         RPA.SAP.Click Element    ${btnCheckTransaccion}
         RPA.SAP.Input Text    ${txtPtoExpedicPtoRecepcionVL10B}    ${centroOrigenMaterial}
         Sleep    1
@@ -93,9 +93,27 @@ RPA Validación y Proceso de traslado del material
         Sleep    1
         RPA.SAP.Input Text    ${txtDocumentoComprasVL10B}    ${txtIdNumeroPedidoSAPME21N}
         RPA.SAP.Click Element    ${btnValidarStock}
+        Sleep    1
+        RPA.Desktop.Click    coordinates:27,179    click
+        RPA.SAP.Click Element    ${btnFondoVL10B}
+        Sleep    2
+        # Cerrar ventana impresora
+        RPA.Desktop.Press Keys    alt    F4
+        RPA.SAP.Click Element    ${btnVisualizarSuprimirEntregasVL10B}
+         Sleep    2
+        RPA.Desktop.Click    coordinates:598,179    click
+         Sleep    1
+        ${obtenerIdNumeroVL10B} =    RPA.SAP.Get Value    ${idTransaccionVL10B}
+        CANTIDAD_CLICK_ELEMENTO    3    ${btnAtras}
+        # ENTR. TRASL - VL02N
+        RPA.Windows.Send Keys    keys=${transaccionVL02N}
+        Sleep    1
+        RPA.SAP.Click Element    ${btnCheckTransaccion}
+        RPA.SAP.Input Text    ${txtEntregaSalidaVL02N}    ${obtenerIdNumeroVL10B}
+        RPA.Windows.Send Keys    keys={ENTER}
         RPA.FileSystem.Create File
         ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
-        ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n ${txtNumeroPedidoSAP}\n\n\n Inicio Pedidos De Compras - ${transaccionVL10B}\n Pto.expedic/Pto.recepción: ${centroOrigenMaterial}\n DocumentoCompra: ${txtIdNumeroPedidoSAPME21N}
+        ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n ${txtNumeroPedidoSAP}\n\n\n Inicio Pedidos De Compras - ${transaccionVL10B}\n Pto.expedic/Pto.recepción: ${centroOrigenMaterial}\n DocumentoCompra: ${txtIdNumeroPedidoSAPME21N}\n\n NÚMERO DOCUMENTO COMERCIAL: ${obtenerIdNumeroVL10B}\n\n\n Entr.Traslado ${obtenerIdNumeroVL10B} - ${transaccionVL02N} 
         ...    encoding=utf-8
         ...    overwrite=True
     ELSE
