@@ -1,19 +1,22 @@
 Validación Stock traslado - MB52
- CódigoMaterial: 70047935
+ CódigoMaterial: 70048076
  CAV: C108
- LibreUtilización:              4
+ LibreUtilización:             13
 
 
 Inicio traslado material - ME21N
  Centro Origen: C108
  Org.Compras: CO06 - Comunicación Celular
- GrupoCompras: T13 - HANDSETS
- Sociedad: CO06 - Comunicación celular S.A
+ GrupoCompras: T09 - EQUIPO VENTA
+ Sociedad: CO15 - Comunicación Celular, S.A
 
- Centro Destino: C100 - CAV BOGOTA CALLE 94
- CodigoMaterial: 70047935
+ Centro Destino: C127 - CAV SAN ANDRES
+ CodigoMaterial: 70048076
  CantidadPedidoMaterial: 1
 
- Ejecución exitosa!
+ Pedido de traslado creado bajo el número 4500595170
 
- Pedido de traslado creado bajo el número 4500595133
+
+ Inicio Pedidos De Compras - VL10B
+ Pto.expedic/Pto.recepción: C108
+ DocumentoCompra: 4500595170

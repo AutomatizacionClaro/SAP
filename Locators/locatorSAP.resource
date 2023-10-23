@@ -41,5 +41,8 @@ ${filaDireccionCavDestino}     ${nvaLoginSAP}/usr/subSUB0:SAPLMEGUI:0010/subSUB3
 ${panelNumeroPedidoSAP}              /app/con[0]/ses[0]/wnd[0]/sbar/pane[0]
 ${numIdPedidoSAP}              /app/con[0]/ses[0]/wnd[1]/usr/subSUB0:SAPLMEGUI:0003/ctxtMEPO_SELECT-EBELN
 
-
+# Ventana VL10B
+${txtPtoExpedicPtoRecepcionVL10B}    ${nvaLoginSAP}/usr/ctxtST_VSTEL-LOW
+${tablaPedidosComprasVL10B}          ${nvaLoginSAP}/usr/tabsTABSTRIP_ORDER_CRITERIA/tabpS0S_TAB5
+${txtDocumentoComprasVL10B}    ${nvaLoginSAP}/usr/tabsTABSTRIP_ORDER_CRITERIA/tabpS0S_TAB5/ssub%_SUBSCREEN_ORDER_CRITERIA:RVV50R10C:1030/ctxtST_EBELN-LOW
 

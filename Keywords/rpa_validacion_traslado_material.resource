@@ -1,6 +1,7 @@
 *** Comments ***
 Validación stock material transacción MB52
 Inicio traslado del material transacción ME21N
+Pedido de compras transacción VL10B
 
 
 *** Settings ***
@@ -15,7 +16,7 @@ Resource    ../Utils/funciones.resource
 
 
 *** Keywords ***
-RPA Validación y Traslado del material
+RPA Validación y Proceso de traslado del material
     [Arguments]    ${codigoMaterial}
     ...    ${centroOrigenMaterial}    ${orgCompras}    ${grupoCompras}    ${sociedad}
     ...    ${cantidadPedidoMaterial}    ${centroDestinoMaterial}
@@ -33,7 +34,7 @@ RPA Validación y Traslado del material
     ${txtLibreUtilizacion} =    RPA.SAP.Get Value    ${txtLibreUtilizado}
     IF    ${txtLibreUtilizacion} != "0"
         CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
-        # INICIO TRASLADO MATERIAL
+        # INICIO TRASLADO MATERIAL ME21N
         RPA.Windows.Send Keys    keys=${transaccionME21N}
         RPA.SAP.Click Element    ${btnCheckTransaccion}
         CapturaPantalla
@@ -77,18 +78,26 @@ RPA Validación y Traslado del material
         ${txtNumeroPedidoSAP} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
         RPA.Desktop.Press Keys    shift    F5
         CapturaPantalla
-        Sleep    1
-        ${txtIdNumeroPedidoSAP} =    RPA.SAP.Get Value    ${numIdPedidoSAP}
-        Log    ${txtIdNumeroPedidoSAP}    console=True
-        Sleep    1
-        RPA.FileSystem.Create File
-        ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
-        ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}
-        ...    encoding=utf-8
-        ...    overwrite=True
+        Sleep    2
+        ${txtIdNumeroPedidoSAPME21N} =    RPA.SAP.Get Value    ${numIdPedidoSAP}
         RPA.Desktop.Press Keys    alt    F4
         Sleep    1
+        # INICIO PEDIDO DE COMPRAS - VL10B
         CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
+        RPA.Windows.Send Keys    keys=${transaccionVL10B}
+         Sleep    1
+        RPA.SAP.Click Element    ${btnCheckTransaccion}
+        RPA.SAP.Input Text    ${txtPtoExpedicPtoRecepcionVL10B}    ${centroOrigenMaterial}
+        Sleep    1
+        RPA.SAP.Click Element    ${tablaPedidosComprasVL10B}
+        Sleep    1
+        RPA.SAP.Input Text    ${txtDocumentoComprasVL10B}    ${txtIdNumeroPedidoSAPME21N}
+        RPA.SAP.Click Element    ${btnValidarStock}
+        RPA.FileSystem.Create File
+        ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
+        ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n ${txtNumeroPedidoSAP}\n\n\n Inicio Pedidos De Compras - ${transaccionVL10B}\n Pto.expedic/Pto.recepción: ${centroOrigenMaterial}\n DocumentoCompra: ${txtIdNumeroPedidoSAPME21N}
+        ...    encoding=utf-8
+        ...    overwrite=True
     ELSE
         RPA.FileSystem.Create File
         ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
