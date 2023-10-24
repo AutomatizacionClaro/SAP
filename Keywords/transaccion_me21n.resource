@@ -7,6 +7,7 @@ Library     RPA.SAP
 Library     RPA.Windows
 Library     RPA.FileSystem
 Library     RPA.Desktop
+Library     RPA.RobotLogListener
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
@@ -50,29 +51,53 @@ transaccion_me21n
     RPA.SAP.Input Text    ${filaAlmacen}    ${almacen}
     Sleep    1
     RPA.Windows.Send Keys    keys={ENTER}
-    CapturaPantalla
     Sleep    2
-    ${textoCavDestino} =    RPA.SAP.Get Value    ${filaDireccionCavDestino}
+    ${ElementoPresente} =    Run Keyword And Return Status
+    ...    Element Should Be Present
+    ...    ${opcionDireccionEntregaME21N}
+    IF    ${ElementoPresente} == $True
+        RPA.SAP.Click Element    ${opcionDireccionEntregaME21N}
+        ${textoCavDestino} =    RPA.SAP.Get Value    ${filaDireccionCavDestino}
+        CapturaPantalla
+    END
     RPA.SAP.Click Element    ${btnGrabarTransaccion}
-    CapturaPantalla
-    Sleep    1
-    RPA.Windows.Send Keys    keys={ENTER}
-    CapturaPantalla
-    Sleep    2
-    ${txtNumeroPedidoSAP} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
-    RPA.Desktop.Press Keys    shift    F5
-    CapturaPantalla
-    Sleep    1
-    ${txtIdNumeroPedidoSAP} =    RPA.SAP.Get Value    ${numIdPedidoSAP}
-    Log    ${txtIdNumeroPedidoSAP}    console=True
-    Sleep    1
-    RPA.FileSystem.Create File
-    ...    ..\\SAP\\Resources\\transaccion_me21n.txt
-    ...    content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}
-    ...    encoding=utf-8
-    ...    overwrite=True
-    RPA.Desktop.Press Keys    alt    F4
-    CapturaPantalla
-    Sleep    1
-    CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
-    CERRAR_APLICATIVO_SAP
+    ${GrabarElementoErroneo} =    Run Keyword And Return Status
+    ...    Element Should Be Present
+    ...    ${btnGrabarRetenerME21N}
+    IF    ${GrabarElementoErroneo} == $True
+        RPA.SAP.Click Element    ${btnGrabarTratarME21N}
+        CapturaPantalla
+        Sleep    2
+        RPA.SAP.Click Element    ${btnGrabarTratarAceptarME21N}
+        Sleep    1
+        CapturaPantalla
+        CERRAR_APLICATIVO_SAP
+        RPA.FileSystem.Create File
+        ...    ..\\SAP\\Resources\\transaccion_me21n.txt
+        ...    content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n FALLIDO!
+        ...    encoding=utf-8
+        ...    overwrite=True
+    ELSE
+        CapturaPantalla
+        Sleep    1
+        RPA.Windows.Send Keys    keys={ENTER}
+        CapturaPantalla
+        Sleep    2
+        ${txtNumeroPedidoSAP} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
+        RPA.Desktop.Press Keys    shift    F5
+        CapturaPantalla
+        Sleep    1
+        ${txtIdNumeroPedidoSAP} =    RPA.SAP.Get Value    ${numIdPedidoSAP}
+        Log    ${txtIdNumeroPedidoSAP}    console=True
+        Sleep    1
+        RPA.FileSystem.Create File
+        ...    ..\\SAP\\Resources\\transaccion_me21n.txt
+        ...    content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}
+        ...    encoding=utf-8
+        ...    overwrite=True
+        RPA.Desktop.Press Keys    alt    F4
+        CapturaPantalla
+        Sleep    1
+        CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
+        CERRAR_APLICATIVO_SAP
+    END

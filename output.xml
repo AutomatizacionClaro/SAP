@@ -1,104 +1,697 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20231024 12:46:21.148" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20231024 17:38:16.081" rpa="false" schemaversion="4">
 <suite id="s1" name="SAP" source="d:\proyectos-vc\AutomationSAP\SAP\TestCases\SAP.robot">
-<test id="s1-t1" name="Ver Imeis" line="33">
-<kw name="Crear IMEI" library="funciones">
-<arg>4</arg>
+<test id="s1-t1" name="Transaccion ME21N - Traslado Material SAP" line="21">
+<kw name="abrir_sap" library="abrirSAP">
+<kw name="Windows Run" library="RPA.Windows">
+<arg>saplogon.exe</arg>
+<tag>window</tag>
+<doc>Use Windows Run window to launch an application.</doc>
+<msg timestamp="20231024 17:38:17.741" level="INFO">Sending keys '{Win}r' to element: &lt;module 'uiautomation' from 'C:\\Users\\pinillaj\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg timestamp="20231024 17:38:18.317" level="INFO">Sending keys 'saplogon.exe' to element: &lt;module 'uiautomation' from 'C:\\Users\\pinillaj\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<msg timestamp="20231024 17:38:18.946" level="INFO">Sending keys '{Enter}' to element: &lt;module 'uiautomation' from 'C:\\Users\\pinillaj\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:17.740" endtime="20231024 17:38:22.471"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:17.739" endtime="20231024 17:38:22.471"/>
+</kw>
+<kw name="login_sap" library="loginSAP">
 <for flavor="IN RANGE">
-<var>${i}</var>
+<var>${Conteo}</var>
 <value>0</value>
-<value>${cantidadImeis}</value>
+<value>99999999</value>
 <iter>
-<var name="${i}">0</var>
-<kw name="Generar Imei" library="crear_imei">
-<var>${prueba}</var>
-<msg timestamp="20231024 12:46:22.133" level="INFO">${prueba} = 650262640654515</msg>
-<status status="PASS" starttime="20231024 12:46:22.133" endtime="20231024 12:46:22.140"/>
+<var name="${Conteo}">0</var>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Login}</var>
+<arg>RPA.SAP.Connect To Session</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Connect To Session" library="RPA.SAP">
+<doc>Connects to an open session SAP.</doc>
+<status status="PASS" starttime="20231024 17:38:24.419" endtime="20231024 17:38:24.456"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${prueba}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231024 12:46:22.140" level="INFO">650262640654515</msg>
-<status status="PASS" starttime="20231024 12:46:22.140" endtime="20231024 12:46:22.140"/>
+<msg timestamp="20231024 17:38:24.456" level="INFO">${Login} = True</msg>
+<status status="PASS" starttime="20231024 17:38:24.419" endtime="20231024 17:38:24.456"/>
 </kw>
-<kw name="Exit For Loop If" library="BuiltIn">
-<arg>${i} == ${cantidadImeis}</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" starttime="20231024 12:46:22.140" endtime="20231024 12:46:22.146"/>
-</kw>
-<status status="PASS" starttime="20231024 12:46:22.133" endtime="20231024 12:46:22.146"/>
+<if>
+<branch type="IF" condition="${Login}== True">
+<break>
+<status status="PASS" starttime="20231024 17:38:24.457" endtime="20231024 17:38:24.457"/>
+</break>
+<status status="PASS" starttime="20231024 17:38:24.456" endtime="20231024 17:38:24.457"/>
+</branch>
+<status status="PASS" starttime="20231024 17:38:24.456" endtime="20231024 17:38:24.458"/>
+</if>
+<status status="PASS" starttime="20231024 17:38:24.418" endtime="20231024 17:38:24.458"/>
 </iter>
-<iter>
-<var name="${i}">1</var>
-<kw name="Generar Imei" library="crear_imei">
-<var>${prueba}</var>
-<msg timestamp="20231024 12:46:22.146" level="INFO">${prueba} = 754735683418167</msg>
-<status status="PASS" starttime="20231024 12:46:22.146" endtime="20231024 12:46:22.146"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${prueba}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231024 12:46:22.147" level="INFO">754735683418167</msg>
-<status status="PASS" starttime="20231024 12:46:22.147" endtime="20231024 12:46:22.147"/>
-</kw>
-<kw name="Exit For Loop If" library="BuiltIn">
-<arg>${i} == ${cantidadImeis}</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" starttime="20231024 12:46:22.147" endtime="20231024 12:46:22.148"/>
-</kw>
-<status status="PASS" starttime="20231024 12:46:22.146" endtime="20231024 12:46:22.148"/>
-</iter>
-<iter>
-<var name="${i}">2</var>
-<kw name="Generar Imei" library="crear_imei">
-<var>${prueba}</var>
-<msg timestamp="20231024 12:46:22.148" level="INFO">${prueba} = 124469302256674</msg>
-<status status="PASS" starttime="20231024 12:46:22.148" endtime="20231024 12:46:22.149"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${prueba}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231024 12:46:22.149" level="INFO">124469302256674</msg>
-<status status="PASS" starttime="20231024 12:46:22.149" endtime="20231024 12:46:22.150"/>
-</kw>
-<kw name="Exit For Loop If" library="BuiltIn">
-<arg>${i} == ${cantidadImeis}</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" starttime="20231024 12:46:22.150" endtime="20231024 12:46:22.151"/>
-</kw>
-<status status="PASS" starttime="20231024 12:46:22.148" endtime="20231024 12:46:22.151"/>
-</iter>
-<iter>
-<var name="${i}">3</var>
-<kw name="Generar Imei" library="crear_imei">
-<var>${prueba}</var>
-<msg timestamp="20231024 12:46:22.152" level="INFO">${prueba} = 178049795031624</msg>
-<status status="PASS" starttime="20231024 12:46:22.152" endtime="20231024 12:46:22.152"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${prueba}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231024 12:46:22.152" level="INFO">178049795031624</msg>
-<status status="PASS" starttime="20231024 12:46:22.152" endtime="20231024 12:46:22.152"/>
-</kw>
-<kw name="Exit For Loop If" library="BuiltIn">
-<arg>${i} == ${cantidadImeis}</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" starttime="20231024 12:46:22.152" endtime="20231024 12:46:22.152"/>
-</kw>
-<status status="PASS" starttime="20231024 12:46:22.151" endtime="20231024 12:46:22.152"/>
-</iter>
-<status status="PASS" starttime="20231024 12:46:22.133" endtime="20231024 12:46:22.152"/>
+<status status="PASS" starttime="20231024 17:38:22.473" endtime="20231024 17:38:24.458"/>
 </for>
-<status status="PASS" starttime="20231024 12:46:22.133" endtime="20231024 12:46:22.152"/>
+<kw name="Open Connection" library="RPA.SAP">
+<arg>SAP EQA</arg>
+<doc>Opens a connection to the given connection name. Be sure to provide the full connection name, including the bracket part.</doc>
+<status status="PASS" starttime="20231024 17:38:24.459" endtime="20231024 17:38:26.325"/>
 </kw>
-<status status="PASS" starttime="20231024 12:46:22.133" endtime="20231024 12:46:22.152"/>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${nvaLoginSAP}${txtUsuario}</arg>
+<arg>${usuarioSAP}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:26.391" level="INFO">Typing text 'CO_HITSS' into text field '/app/con[0]/ses[0]/wnd[0]/usr/txtRSYST-BNAME'.</msg>
+<status status="PASS" starttime="20231024 17:38:26.326" endtime="20231024 17:38:26.393"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:28.906" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:26.395" endtime="20231024 17:38:28.910"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:28.976" level="INFO" html="true">&lt;a href="Images/screenshot_1.jpg"&gt;&lt;img src="Images/screenshot_1.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:28.910" endtime="20231024 17:38:28.976"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:26.394" endtime="20231024 17:38:28.977"/>
+</kw>
+<kw name="Input Password" library="RPA.SAP">
+<arg>${nvaLoginSAP}${txtClave}</arg>
+<arg>${claveSAP}</arg>
+<doc>Inserts the given password into the text field identified by locator.
+The password is not recorded in the log.</doc>
+<msg timestamp="20231024 17:38:28.993" level="INFO">Typing password into text field '/app/con[0]/ses[0]/wnd[0]/usr/pwdRSYST-BCODE'.</msg>
+<status status="PASS" starttime="20231024 17:38:28.977" endtime="20231024 17:38:28.993"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:29.996" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:28.995" endtime="20231024 17:38:29.996"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:30.041" level="INFO" html="true">&lt;a href="Images/screenshot_2.jpg"&gt;&lt;img src="Images/screenshot_2.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:29.997" endtime="20231024 17:38:30.041"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:28.994" endtime="20231024 17:38:30.042"/>
+</kw>
+<kw name="Click Element" library="RPA.SAP">
+<arg>${nvaLoginSAP}${btnLogin}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="PASS" starttime="20231024 17:38:30.042" endtime="20231024 17:38:30.803"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${ElementoPresente}</var>
+<arg>Element Should Be Present</arg>
+<arg>${vnaSesionAbierta}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Element Should Be Present" library="RPA.SAP">
+<arg>${vnaSesionAbierta}</arg>
+<doc>Checks whether an element is present on the screen.</doc>
+<status status="PASS" starttime="20231024 17:38:30.805" endtime="20231024 17:38:30.811"/>
+</kw>
+<msg timestamp="20231024 17:38:30.812" level="INFO">${ElementoPresente} = True</msg>
+<status status="PASS" starttime="20231024 17:38:30.804" endtime="20231024 17:38:30.813"/>
+</kw>
+<if>
+<branch type="IF" condition="${ElementoPresente} == $True">
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:31.822" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:30.822" endtime="20231024 17:38:31.822"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:31.876" level="INFO" html="true">&lt;a href="Images/screenshot_3.jpg"&gt;&lt;img src="Images/screenshot_3.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:31.823" endtime="20231024 17:38:31.877"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:30.821" endtime="20231024 17:38:31.877"/>
+</kw>
+<kw name="Select Radio Button" library="RPA.SAP">
+<arg>${vnaSesionAbierta}${rbtnOpcionDos}</arg>
+<doc>Sets radio button to the specified value.</doc>
+<status status="PASS" starttime="20231024 17:38:31.878" endtime="20231024 17:38:31.893"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:32.896" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:31.895" endtime="20231024 17:38:32.896"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:32.940" level="INFO" html="true">&lt;a href="Images/screenshot_4.jpg"&gt;&lt;img src="Images/screenshot_4.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:32.897" endtime="20231024 17:38:32.941"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:31.893" endtime="20231024 17:38:32.941"/>
+</kw>
+<kw name="Click Element" library="RPA.SAP">
+<arg>${vnaSesionAbierta}${btnCheckOK}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="PASS" starttime="20231024 17:38:32.942" endtime="20231024 17:38:34.483"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:35.485" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:34.485" endtime="20231024 17:38:35.486"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:35.524" level="INFO" html="true">&lt;a href="Images/screenshot_5.jpg"&gt;&lt;img src="Images/screenshot_5.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:35.486" endtime="20231024 17:38:35.525"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:34.484" endtime="20231024 17:38:35.525"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:30.814" endtime="20231024 17:38:35.525"/>
+</branch>
+<status status="PASS" starttime="20231024 17:38:30.813" endtime="20231024 17:38:35.526"/>
+</if>
+<status status="PASS" starttime="20231024 17:38:22.472" endtime="20231024 17:38:35.526"/>
+</kw>
+<kw name="transaccion_me21n" library="transaccion_me21n">
+<arg>C108</arg>
+<arg>CO06</arg>
+<arg>T09</arg>
+<arg>CO15</arg>
+<arg>70048076</arg>
+<arg>1</arg>
+<arg>C127</arg>
+<kw name="Send Keys" library="RPA.Windows">
+<arg>keys=${transaccionME21N}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<msg timestamp="20231024 17:38:35.533" level="INFO">Sending keys 'ME21N' to element: &lt;module 'uiautomation' from 'C:\\Users\\pinillaj\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:35.531" endtime="20231024 17:38:36.089"/>
+</kw>
+<kw name="Click Element" library="RPA.SAP">
+<arg>${btnCheckTransaccion}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="PASS" starttime="20231024 17:38:36.090" endtime="20231024 17:38:40.402"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:41.404" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:40.403" endtime="20231024 17:38:41.404"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:41.457" level="INFO" html="true">&lt;a href="Images/screenshot_6.jpg"&gt;&lt;img src="Images/screenshot_6.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:41.405" endtime="20231024 17:38:41.458"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:40.403" endtime="20231024 17:38:41.458"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:43.461" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231024 17:38:41.459" endtime="20231024 17:38:43.461"/>
+</kw>
+<kw name="Select From List By Label" library="RPA.SAP">
+<arg>${pedidoTrasladoME21N}</arg>
+<arg>${pedidoTraslado}</arg>
+<doc>Selects the specified option from the selection list.</doc>
+<status status="PASS" starttime="20231024 17:38:43.462" endtime="20231024 17:38:43.820"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${centroSuministradoME21N}</arg>
+<arg>${centroOrigenMaterial}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:43.981" level="INFO">Typing text 'C108' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD'.</msg>
+<status status="PASS" starttime="20231024 17:38:43.820" endtime="20231024 17:38:43.981"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:44.983" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:43.983" endtime="20231024 17:38:44.983"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:45.040" level="INFO" html="true">&lt;a href="Images/screenshot_7.jpg"&gt;&lt;img src="Images/screenshot_7.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:44.984" endtime="20231024 17:38:45.041"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:43.982" endtime="20231024 17:38:45.041"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:46.044" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:45.042" endtime="20231024 17:38:46.044"/>
+</kw>
+<kw name="Send Keys" library="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<msg timestamp="20231024 17:38:46.046" level="INFO">Sending keys '{ENTER}' to element: &lt;module 'uiautomation' from 'C:\\Users\\pinillaj\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:46.045" endtime="20231024 17:38:46.569"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${orgCompraME21N}</arg>
+<arg>${orgCompras}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:46.590" level="INFO">Typing text 'CO06' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKORG'.</msg>
+<status status="PASS" starttime="20231024 17:38:46.569" endtime="20231024 17:38:46.591"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:47.593" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:46.592" endtime="20231024 17:38:47.593"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${grupoComprasME21N}</arg>
+<arg>${grupoCompras}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:47.613" level="INFO">Typing text 'T09' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKGRP'.</msg>
+<status status="PASS" starttime="20231024 17:38:47.594" endtime="20231024 17:38:47.613"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:48.614" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:47.614" endtime="20231024 17:38:48.614"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${sociedadME21N}</arg>
+<arg>${sociedad}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:48.633" level="INFO">Typing text 'CO15' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-BUKRS'.</msg>
+<status status="PASS" starttime="20231024 17:38:48.616" endtime="20231024 17:38:48.633"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:49.635" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:48.633" endtime="20231024 17:38:49.635"/>
+</kw>
+<kw name="Send Keys" library="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<msg timestamp="20231024 17:38:49.637" level="INFO">Sending keys '{ENTER}' to element: &lt;module 'uiautomation' from 'C:\\Users\\pinillaj\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:49.636" endtime="20231024 17:38:50.160"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:51.162" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:50.161" endtime="20231024 17:38:51.162"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:51.219" level="INFO" html="true">&lt;a href="Images/screenshot_8.jpg"&gt;&lt;img src="Images/screenshot_8.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:51.163" endtime="20231024 17:38:51.219"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:50.160" endtime="20231024 17:38:51.220"/>
+</kw>
+<kw name="Get Value" library="RPA.SAP">
+<var>${textoOrgCompra}</var>
+<arg>${valorOrgCompraME21N}</arg>
+<doc>Gets the value of the given element. The possible return values depend on the type of element (see Return values).</doc>
+<msg timestamp="20231024 17:38:51.279" level="INFO">${textoOrgCompra} = Comunicación Celular</msg>
+<status status="PASS" starttime="20231024 17:38:51.220" endtime="20231024 17:38:51.279"/>
+</kw>
+<kw name="Get Value" library="RPA.SAP">
+<var>${textoGrupoCompra}</var>
+<arg>${valorGrupoComprasME21N}</arg>
+<doc>Gets the value of the given element. The possible return values depend on the type of element (see Return values).</doc>
+<msg timestamp="20231024 17:38:51.318" level="INFO">${textoGrupoCompra} = EQUIPO VENTA</msg>
+<status status="PASS" starttime="20231024 17:38:51.280" endtime="20231024 17:38:51.319"/>
+</kw>
+<kw name="Get Value" library="RPA.SAP">
+<var>${textoSociedad}</var>
+<arg>${valorSociedadME21N}</arg>
+<doc>Gets the value of the given element. The possible return values depend on the type of element (see Return values).</doc>
+<msg timestamp="20231024 17:38:51.362" level="INFO">${textoSociedad} = Comunicación Celular, S.A</msg>
+<status status="PASS" starttime="20231024 17:38:51.319" endtime="20231024 17:38:51.362"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${filaCodigoMaterial}</arg>
+<arg>${codigoMaterial}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:51.430" level="INFO">Typing text '70048076' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-EMATN[4,0]'.</msg>
+<status status="PASS" starttime="20231024 17:38:51.363" endtime="20231024 17:38:51.431"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:52.432" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:51.431" endtime="20231024 17:38:52.432"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${filaCantidadPedido}</arg>
+<arg>${cantidadPedidoMaterial}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:52.514" level="INFO">Typing text '1' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-MENGE[6,0]'.</msg>
+<status status="PASS" starttime="20231024 17:38:52.433" endtime="20231024 17:38:52.515"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:53.517" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:52.515" endtime="20231024 17:38:53.517"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${filaLote}</arg>
+<arg>${lote}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:53.627" level="INFO">Typing text 'VALORADO' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-CHARG[8,0]'.</msg>
+<status status="PASS" starttime="20231024 17:38:53.518" endtime="20231024 17:38:53.628"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:54.629" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:53.628" endtime="20231024 17:38:54.629"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:38:54.668" level="INFO" html="true">&lt;a href="Images/screenshot_9.jpg"&gt;&lt;img src="Images/screenshot_9.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:54.630" endtime="20231024 17:38:54.668"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:53.628" endtime="20231024 17:38:54.669"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:55.670" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:54.669" endtime="20231024 17:38:55.670"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${filaCavDestino}</arg>
+<arg>${centroDestinoMaterial}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:55.802" level="INFO">Typing text 'C127' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[10,0]'.</msg>
+<status status="PASS" starttime="20231024 17:38:55.671" endtime="20231024 17:38:55.802"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:56.803" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:55.803" endtime="20231024 17:38:56.804"/>
+</kw>
+<kw name="Input Text" library="RPA.SAP">
+<arg>${filaAlmacen}</arg>
+<arg>${almacen}</arg>
+<doc>Inserts the given text into the text field identified by locator.
+Use keyword `input password` to insert a password in a text field.</doc>
+<msg timestamp="20231024 17:38:56.910" level="INFO">Typing text 'H001' into text field '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-LGOBE[11,0]'.</msg>
+<status status="PASS" starttime="20231024 17:38:56.804" endtime="20231024 17:38:56.910"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:38:57.912" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:38:56.911" endtime="20231024 17:38:57.912"/>
+</kw>
+<kw name="Send Keys" library="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<msg timestamp="20231024 17:38:57.913" level="INFO">Sending keys '{ENTER}' to element: &lt;module 'uiautomation' from 'C:\\Users\\pinillaj\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\uiautomation\\__init__.py'&gt;</msg>
+<status status="PASS" starttime="20231024 17:38:57.912" endtime="20231024 17:38:58.437"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:39:00.439" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231024 17:38:58.438" endtime="20231024 17:39:00.439"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${ElementoPresente}</var>
+<arg>Element Should Be Present</arg>
+<arg>${opcionDireccionEntregaME21N}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Element Should Be Present" library="RPA.SAP">
+<arg>${opcionDireccionEntregaME21N}</arg>
+<doc>Checks whether an element is present on the screen.</doc>
+<msg timestamp="20231024 17:39:00.485" level="INFO" html="true">&lt;a href="sap-screenshot_1.jpg"&gt;&lt;img src="sap-screenshot_1.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231024 17:39:00.486" level="FAIL">ValueError: Cannot find Element '/app/con[0]/ses[0]/wnd[0]/usr/subSUB0:SAPLMEGUI:0019/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15'.</msg>
+<status status="FAIL" starttime="20231024 17:39:00.441" endtime="20231024 17:39:00.495"/>
+</kw>
+<msg timestamp="20231024 17:39:00.496" level="INFO">${ElementoPresente} = False</msg>
+<status status="PASS" starttime="20231024 17:39:00.440" endtime="20231024 17:39:00.496"/>
+</kw>
+<if>
+<branch type="IF" condition="${ElementoPresente} == $True">
+<kw name="Click Element" library="RPA.SAP">
+<arg>${opcionDireccionEntregaME21N}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:00.497" endtime="20231024 17:39:00.497"/>
+</kw>
+<kw name="Get Value" library="RPA.SAP">
+<var>${textoCavDestino}</var>
+<arg>${filaDireccionCavDestino}</arg>
+<doc>Gets the value of the given element. The possible return values depend on the type of element (see Return values).</doc>
+<status status="NOT RUN" starttime="20231024 17:39:00.497" endtime="20231024 17:39:00.497"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<status status="NOT RUN" starttime="20231024 17:39:00.498" endtime="20231024 17:39:00.498"/>
+</kw>
+<status status="NOT RUN" starttime="20231024 17:39:00.496" endtime="20231024 17:39:00.498"/>
+</branch>
+<status status="PASS" starttime="20231024 17:39:00.496" endtime="20231024 17:39:00.498"/>
+</if>
+<kw name="Click Element" library="RPA.SAP">
+<arg>${btnGrabarTransaccion}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="PASS" starttime="20231024 17:39:00.498" endtime="20231024 17:39:01.031"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${GrabarElementoErroneo}</var>
+<arg>Element Should Be Present</arg>
+<arg>${btnGrabarRetenerME21N}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Element Should Be Present" library="RPA.SAP">
+<arg>${btnGrabarRetenerME21N}</arg>
+<doc>Checks whether an element is present on the screen.</doc>
+<status status="PASS" starttime="20231024 17:39:01.033" endtime="20231024 17:39:01.160"/>
+</kw>
+<msg timestamp="20231024 17:39:01.160" level="INFO">${GrabarElementoErroneo} = True</msg>
+<status status="PASS" starttime="20231024 17:39:01.032" endtime="20231024 17:39:01.160"/>
+</kw>
+<if>
+<branch type="IF" condition="${GrabarElementoErroneo} == $True">
+<kw name="Click Element" library="RPA.SAP">
+<arg>${btnGrabarTratarME21N}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="PASS" starttime="20231024 17:39:01.161" endtime="20231024 17:39:02.574"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:39:03.577" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:39:02.575" endtime="20231024 17:39:03.577"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:39:03.619" level="INFO" html="true">&lt;a href="Images/screenshot_10.jpg"&gt;&lt;img src="Images/screenshot_10.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:39:03.577" endtime="20231024 17:39:03.620"/>
+</kw>
+<status status="PASS" starttime="20231024 17:39:02.575" endtime="20231024 17:39:03.620"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:39:05.621" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231024 17:39:03.621" endtime="20231024 17:39:05.621"/>
+</kw>
+<kw name="Click Element" library="RPA.SAP">
+<arg>${btnGrabarTratarAceptarME21N}</arg>
+<doc>Performs a single click on a given element. Used only for buttons, tabs and menu items.</doc>
+<status status="PASS" starttime="20231024 17:39:05.622" endtime="20231024 17:39:06.042"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:39:07.043" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:39:06.043" endtime="20231024 17:39:07.043"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:39:08.046" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231024 17:39:07.045" endtime="20231024 17:39:08.046"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20231024 17:39:08.100" level="INFO" html="true">&lt;a href="Images/screenshot_11.jpg"&gt;&lt;img src="Images/screenshot_11.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231024 17:39:08.047" endtime="20231024 17:39:08.101"/>
+</kw>
+<status status="PASS" starttime="20231024 17:39:07.044" endtime="20231024 17:39:08.101"/>
+</kw>
+<kw name="CERRAR_APLICATIVO_SAP" library="funciones">
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>alt</arg>
+<arg>F4</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20231024 17:39:08.104" level="INFO">Pressing keys: Key.alt, Key.f4</msg>
+<status status="PASS" starttime="20231024 17:39:08.103" endtime="20231024 17:39:08.112"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>tab</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20231024 17:39:08.114" level="INFO">Pressing keys: Key.tab</msg>
+<status status="PASS" starttime="20231024 17:39:08.113" endtime="20231024 17:39:08.214"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231024 17:39:10.215" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231024 17:39:08.214" endtime="20231024 17:39:10.215"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>tab</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20231024 17:39:10.217" level="INFO">Pressing keys: Key.tab</msg>
+<status status="PASS" starttime="20231024 17:39:10.216" endtime="20231024 17:39:10.219"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>enter</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20231024 17:39:10.222" level="INFO">Pressing keys: Key.enter</msg>
+<status status="PASS" starttime="20231024 17:39:10.219" endtime="20231024 17:39:10.322"/>
+</kw>
+<status status="PASS" starttime="20231024 17:39:08.102" endtime="20231024 17:39:10.322"/>
+</kw>
+<kw name="Create File" library="RPA.FileSystem">
+<arg>..\\SAP\\Resources\\transaccion_me21n.txt</arg>
+<arg>content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n FALLIDO!</arg>
+<arg>encoding=utf-8</arg>
+<arg>overwrite=True</arg>
+<doc>Creates a new text file, and writes content if any is given.</doc>
+<status status="PASS" starttime="20231024 17:39:10.323" endtime="20231024 17:39:10.332"/>
+</kw>
+<status status="PASS" starttime="20231024 17:39:01.161" endtime="20231024 17:39:10.333"/>
+</branch>
+<branch type="ELSE">
+<kw name="CapturaPantalla" library="Script">
+<status status="NOT RUN" starttime="20231024 17:39:10.334" endtime="20231024 17:39:10.337"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.337" endtime="20231024 17:39:10.338"/>
+</kw>
+<kw name="Send Keys" library="RPA.Windows">
+<arg>keys={ENTER}</arg>
+<tag>action</tag>
+<tag>keyboard</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.339" endtime="20231024 17:39:10.340"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<status status="NOT RUN" starttime="20231024 17:39:10.340" endtime="20231024 17:39:10.341"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.341" endtime="20231024 17:39:10.341"/>
+</kw>
+<kw name="Get Value" library="RPA.SAP">
+<var>${txtNumeroPedidoSAP}</var>
+<arg>${panelNumeroPedidoSAP}</arg>
+<doc>Gets the value of the given element. The possible return values depend on the type of element (see Return values).</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.342" endtime="20231024 17:39:10.342"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>shift</arg>
+<arg>F5</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.342" endtime="20231024 17:39:10.342"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<status status="NOT RUN" starttime="20231024 17:39:10.343" endtime="20231024 17:39:10.343"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.343" endtime="20231024 17:39:10.343"/>
+</kw>
+<kw name="Get Value" library="RPA.SAP">
+<var>${txtIdNumeroPedidoSAP}</var>
+<arg>${numIdPedidoSAP}</arg>
+<doc>Gets the value of the given element. The possible return values depend on the type of element (see Return values).</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.344" endtime="20231024 17:39:10.344"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${txtIdNumeroPedidoSAP}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.344" endtime="20231024 17:39:10.344"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.345" endtime="20231024 17:39:10.345"/>
+</kw>
+<kw name="Create File" library="RPA.FileSystem">
+<arg>..\\SAP\\Resources\\transaccion_me21n.txt</arg>
+<arg>content=Transacción ME21N - Traslado material de un CAV a un punto directo\n\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n Ejecución exitosa!\n\n ${txtNumeroPedidoSAP}</arg>
+<arg>encoding=utf-8</arg>
+<arg>overwrite=True</arg>
+<doc>Creates a new text file, and writes content if any is given.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.345" endtime="20231024 17:39:10.345"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>alt</arg>
+<arg>F4</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.346" endtime="20231024 17:39:10.346"/>
+</kw>
+<kw name="CapturaPantalla" library="Script">
+<status status="NOT RUN" starttime="20231024 17:39:10.346" endtime="20231024 17:39:10.346"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20231024 17:39:10.346" endtime="20231024 17:39:10.347"/>
+</kw>
+<kw name="CANTIDAD_CLICK_ELEMENTO" library="funciones">
+<arg>2</arg>
+<arg>${btnAtras}</arg>
+<status status="NOT RUN" starttime="20231024 17:39:10.347" endtime="20231024 17:39:10.347"/>
+</kw>
+<kw name="CERRAR_APLICATIVO_SAP" library="funciones">
+<status status="NOT RUN" starttime="20231024 17:39:10.347" endtime="20231024 17:39:10.347"/>
+</kw>
+<status status="NOT RUN" starttime="20231024 17:39:10.333" endtime="20231024 17:39:10.348"/>
+</branch>
+<status status="PASS" starttime="20231024 17:39:01.160" endtime="20231024 17:39:10.348"/>
+</if>
+<status status="PASS" starttime="20231024 17:38:35.529" endtime="20231024 17:39:10.348"/>
+</kw>
+<status status="PASS" starttime="20231024 17:38:17.738" endtime="20231024 17:39:10.349"/>
 </test>
-<status status="PASS" starttime="20231024 12:46:21.154" endtime="20231024 12:46:22.152"/>
+<status status="PASS" starttime="20231024 17:38:16.098" endtime="20231024 17:39:10.353"/>
 </suite>
 <statistics>
 <total>

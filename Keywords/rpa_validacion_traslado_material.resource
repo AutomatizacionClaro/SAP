@@ -111,6 +111,11 @@ RPA Validación y Proceso de traslado del material
         RPA.SAP.Click Element    ${btnCheckTransaccion}
         RPA.SAP.Input Text    ${txtEntregaSalidaVL02N}    ${obtenerIdNumeroVL10B}
         RPA.Windows.Send Keys    keys={ENTER}
+        Sleep    1
+        RPA.SAP.Click Element    ${tablaResumenPosicionesVL02N}
+        Sleep    1
+        RPA.SAP.Click Element    ${menuDetallesVL02N} 
+        RPA.SAP.Click Element    ${menuDetallesNumeroSerieVL02N}
         RPA.FileSystem.Create File
         ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
         ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n ${txtNumeroPedidoSAP}\n\n\n Inicio Pedidos De Compras - ${transaccionVL10B}\n Pto.expedic/Pto.recepción: ${centroOrigenMaterial}\n DocumentoCompra: ${txtIdNumeroPedidoSAPME21N}\n\n NÚMERO DOCUMENTO COMERCIAL: ${obtenerIdNumeroVL10B}\n\n\n Entr.Traslado ${obtenerIdNumeroVL10B} - ${transaccionVL02N} 

@@ -2,6 +2,7 @@
 *** Settings ***
 Library     RPA.SAP
 Library     RPA.Desktop
+Library     RPA.FileSystem
 Library     crear_imei.py
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
@@ -28,8 +29,10 @@ Crear IMEI
     [Arguments]    ${cantidadImeis}
 
     FOR  ${i}  IN RANGE  0  ${cantidadImeis}
-    ${totalImeis} =    crear_imei.generar_imei
+    ${totalImeis} =    crear_imei.generar_imei 
     Log    ${totalImeis}    console=True
     Exit For Loop If    ${i} == ${cantidadImeis}
-    END 
+    END
+
+ 
     
