@@ -5,6 +5,7 @@ Resource    ../Keywords/transaction_mb52.resource
 Resource    ../Keywords/transaccion_me21n.resource
 Resource    ../Keywords/transaccion_vl10b.resource
 Resource    ../Keywords/rpa_validacion_traslado_material.resource
+Resource    ../Utils/funciones.resource
 
 *** Test Cases ***
 Autenticacion Login SAP
@@ -28,6 +29,10 @@ Transaccion VL10B - Pedidos de compras
     abrir_sap
     login_sap
     transaccion_vl10b    C108  4201367423
+
+Crear Imeis
+# cantidadImei
+  Crear IMEI  4
 
 RPA Validación Stock y Traslado del material
 # Inserta: codigo_material - CAV_origen - Org_compras - grupo_compras - sociedad - cantidad_pedido - CAV_destino

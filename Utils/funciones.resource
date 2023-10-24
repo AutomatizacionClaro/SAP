@@ -2,6 +2,7 @@
 *** Settings ***
 Library     RPA.SAP
 Library     RPA.Desktop
+Library     crear_imei.py
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 
@@ -22,3 +23,13 @@ CERRAR_APLICATIVO_SAP
     Sleep  2s 
     RPA.Desktop.Press Keys    tab
     RPA.Desktop.Press Keys    enter
+
+Crear IMEI
+    [Arguments]    ${cantidadImeis}
+
+    FOR  ${i}  IN RANGE  0  ${cantidadImeis}
+    ${totalImeis} =    crear_imei.generar_imei
+    Log    ${totalImeis}    console=True
+    Exit For Loop If    ${i} == ${cantidadImeis}
+    END 
+    
