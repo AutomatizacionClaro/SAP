@@ -61,10 +61,9 @@ transaccion_me21n
         CapturaPantalla
     END
     RPA.SAP.Click Element    ${btnGrabarTransaccion}
-    ${GrabarElementoErroneo} =    Run Keyword And Return Status
-    ...    Element Should Be Present
-    ...    ${btnGrabarRetenerME21N}
-    IF    ${GrabarElementoErroneo} == $True
+    CapturaPantalla
+    ${nombreBtnGrabar} =    RPA.SAP.Get Value    ${btnGrabarRetenerME21N}
+    IF    "${nombreBtnGrabar}" == "Reten."
         RPA.SAP.Click Element    ${btnGrabarTratarME21N}
         CapturaPantalla
         Sleep    2
