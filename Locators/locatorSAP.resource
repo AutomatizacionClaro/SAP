@@ -58,3 +58,4 @@ ${txtEntregaSalidaVL02N}                    ${nvaLoginSAP}/usr/ctxtLIKP-VBELN
 ${tablaResumenPosicionesVL02N}              ${nvaLoginSAP}/usr/tabsTAXI_TABSTRIP_OVERVIEW/tabpT\01
 ${menuDetallesVL02N}                        ${nvaLoginSAP}/mbar/menu[3]
 ${menuDetallesNumeroSerieVL02N}             ${menuDetallesVL02N}/menu[2]
+${campoAlmacenVL02N}                        /app/con[0]/ses[0]/wnd[0]/usr/tabsTAXI_TABSTRIP_OVERVIEW/tabpT\01/ssubSUBSCREEN_BODY:SAPMV50A:1102/tblSAPMV50ATC_LIPS_OVER/ctxtLIPS-LGORT[30,0]
