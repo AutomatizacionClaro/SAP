@@ -97,6 +97,6 @@ transaccion_me21n
         RPA.Desktop.Press Keys    alt    F4
         CapturaPantalla
         Sleep    1
-        CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
+        CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
         CERRAR_APLICATIVO_SAP
     END

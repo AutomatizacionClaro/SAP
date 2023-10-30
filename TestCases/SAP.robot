@@ -4,6 +4,8 @@ Resource  ../keywords/loginSAP.resource
 Resource    ../Keywords/transaction_mb52.resource
 Resource    ../Keywords/transaccion_me21n.resource
 Resource    ../Keywords/transaccion_vl10b.resource
+Resource    ../Keywords/transaccion_vl02n.resource
+Resource    ../Keywords/transaccion_iq09.resource    
 Resource    ../Keywords/rpa_validacion_traslado_material.resource
 Resource    ../Utils/funciones.resource
 
@@ -33,6 +35,16 @@ Transaccion VL10B - Pedidos de compras
 Crear Imeis
 # cantidadImei
   Crear IMEI  1
+
+Transaccion VL02N prueba
+    abrir_sap
+    login_sap
+    transaccion_vl02n
+
+Transaccion IQ09 prueba
+    abrir_sap
+    login_sap
+    transaccion_iq09
 
 RPA Validación Stock y Traslado del material
 # Inserta: codigo_material - CAV_origen - Org_compras - grupo_compras - sociedad - cantidad_pedido - CAV_destino

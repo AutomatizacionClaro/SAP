@@ -33,7 +33,7 @@ RPA Validación y Proceso de traslado del material
     Sleep    1
     ${txtLibreUtilizacion} =    RPA.SAP.Get Value    ${txtLibreUtilizado}
     IF    ${txtLibreUtilizacion} != "0"
-        CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
+        CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
         # INICIO TRASLADO MATERIAL ME21N
         RPA.Windows.Send Keys    keys=${transaccionME21N}
         RPA.SAP.Click Element    ${btnCheckTransaccion}
@@ -106,7 +106,7 @@ RPA Validación y Proceso de traslado del material
             RPA.Desktop.Press Keys    alt    F4
             Sleep    1
             # INICIO PEDIDO DE COMPRAS - VL10B
-            CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
+            CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
             RPA.Windows.Send Keys    keys=${transaccionVL10B}
             Sleep    1
             RPA.SAP.Click Element    ${btnCheckTransaccion}
@@ -127,7 +127,7 @@ RPA Validación y Proceso de traslado del material
             RPA.Desktop.Click    coordinates:598,179    click
             Sleep    1
             ${obtenerIdNumeroVL10B} =    RPA.SAP.Get Value    ${idTransaccionVL10B}
-            CANTIDAD_CLICK_ELEMENTO    3    ${btnAtras}
+            CANTIDAD_CLICK_ELEMENTO_RPA_SAP    3    ${btnAtras}
             # ENTR. TRASL - VL02N
             RPA.Windows.Send Keys    keys=${transaccionVL02N}
             Sleep    1
@@ -137,8 +137,13 @@ RPA Validación y Proceso de traslado del material
             Sleep    1
             RPA.Desktop.Click    coordinates:32,379    click
             #RPA.SAP.Click Element    ${tablaResumenPosicionesVL02N}
-            RPA.SAP.Input Text    ${campoAlmacenVL02N}  ${almacen}
+            CANTIDAD_CLICK_ELEMENTO_RPA_DESKTOP   1   up
+            CANTIDAD_CLICK_ELEMENTO_RPA_DESKTOP   12  tab
+            RPA.Desktop.Type Text  ${almacen}
+            RPA.Windows.Send Keys    keys={ENTER}  
+            #RPA.SAP.Input Text    ${campoAlmacenVL02N}  ${almacen}
             Sleep    1
+            RPA.SAP.Select Context Menu Item    ${menuDetallesVL02N}   2    Números de serie
             RPA.SAP.Click Element    ${menuDetallesVL02N}
             RPA.SAP.Click Element    ${menuDetallesNumeroSerieVL02N}
             RPA.FileSystem.Create File

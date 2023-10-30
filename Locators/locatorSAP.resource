@@ -56,6 +56,13 @@ ${idTransaccionVL10B}                       /app/con[0]/ses[0]/wnd[0]/usr/subSUB
 # Ventana VL02N
 ${txtEntregaSalidaVL02N}                    ${nvaLoginSAP}/usr/ctxtLIKP-VBELN
 ${tablaResumenPosicionesVL02N}              ${nvaLoginSAP}/usr/tabsTAXI_TABSTRIP_OVERVIEW/tabpT\01
-${menuDetallesVL02N}                        ${nvaLoginSAP}/mbar/menu[3]
-${menuDetallesNumeroSerieVL02N}             ${menuDetallesVL02N}/menu[2]
+${menuDetallesVL02N}                        /app/con[0]/ses[0]/wnd[0]/mbar/menu[3]
+${menuDetallesNumeroSerieVL02N}             /app/con[0]/ses[0]/wnd[0]/mbar/menu[3]/menu[3]
 ${campoAlmacenVL02N}                        /app/con[0]/ses[0]/wnd[0]/usr/tabsTAXI_TABSTRIP_OVERVIEW/tabpT\01/ssubSUBSCREEN_BODY:SAPMV50A:1102/tblSAPMV50ATC_LIPS_OVER/ctxtLIPS-LGORT[30,0]
+
+# Ventana IQ09
+${materialIq09}                            /app/con[0]/ses[0]/wnd[0]/usr/ctxtMATNR-LOW
+${txtStatusInclusivoIq09}                  /app/con[0]/ses[0]/wnd[0]/usr/ctxtSTAI1-LOW
+${txtCentroIq09}                           /app/con[0]/ses[0]/wnd[0]/usr/ctxtWERK-LOW
+${txtAlmacenIq09}                          /app/con[0]/ses[0]/wnd[0]/usr/ctxtLAGER-LOW
+${tablaIdIq09}                             /app/con[0]/ses[0]/wnd[0]/usr/cntlGRID1/shellcont/shell

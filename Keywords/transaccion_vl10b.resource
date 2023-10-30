@@ -35,5 +35,5 @@ transaccion_vl10b
     RPA.Desktop.Click    coordinates:598,179    click
     Sleep    1
     ${obtenerIdNumeroVL10B} =    RPA.SAP.Get Value    ${idTransaccionVL10B}
-    CANTIDAD_CLICK_ELEMENTO    3    ${btnAtras}
+    CANTIDAD_CLICK_ELEMENTO_RPA_SAP    3    ${btnAtras}
     CERRAR_APLICATIVO_SAP
