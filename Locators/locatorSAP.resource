@@ -77,3 +77,5 @@ ${txtStatusInclusivoIq09}                  /app/con[0]/ses[0]/wnd[0]/usr/ctxtSTA
 ${txtCentroIq09}                           /app/con[0]/ses[0]/wnd[0]/usr/ctxtWERK-LOW
 ${txtAlmacenIq09}                          /app/con[0]/ses[0]/wnd[0]/usr/ctxtLAGER-LOW
 ${tablaIdIq09}                             /app/con[0]/ses[0]/wnd[0]/usr/cntlGRID1/shellcont/shell
+${btnNumeroSerieIQ09}                      /app/con[0]/ses[0]/wnd[0]/usr/btn%_SERNR_%_APP_%-VALU_PUSH
+${btnGuardarNumerosSerieIQ09}              /app/con[0]/ses[0]/wnd[1]/tbar[0]/btn[8]

@@ -1,7 +1,7 @@
 Validación Stock traslado - MB52
- CódigoMaterial: 70048876
+ CódigoMaterial: 70046968
  CAV: C108
- LibreUtilización:              8
+ LibreUtilización:             63
 
 
 Inicio traslado material - ME21N
@@ -11,22 +11,22 @@ Inicio traslado material - ME21N
  Sociedad: CO15 - Comunicación Celular, S.A
 
  Centro Destino: C127 - CAV SAN ANDRES
- CodigoMaterial: 70048876
- CantidadPedidoMaterial: 1
+ CodigoMaterial: 70046968
+ CantidadPedidoMaterial: 2
 
- PEDIDO DE TRASLADO creado bajo el número 4201367471
+ PEDIDO DE TRASLADO creado bajo el número 4201367472
 
 
  Inicio Pedidos De Compras - VL10B
  Pto.expedic/Pto.recepción: C108
- DocumentoCompra: 4201367471
+ DocumentoCompra: 4201367472
 
- NÚMERO DOCUMENTO COMERCIAL: 2101621281
+ NÚMERO DOCUMENTO COMERCIAL: 2101621282
 
 
- Entr.Traslado 2101621281 - VL02N
- Entr. Trasl. Nal 2101621281 grabado
+ Entr.Traslado 2101621282 - VL02N
+ Entr. Trasl. Nal 2101621282 grabado
 
 
  Transacción MIGO
- Documento material 5003281304 contabilizado
+ Documento material 5003281305 contabilizado

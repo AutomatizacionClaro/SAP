@@ -110,14 +110,17 @@ RPA Validación y Proceso de traslado del material
             # INICIO PEDIDO DE COMPRAS - VL10B
             CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
             RPA.Windows.Send Keys    keys=${transaccionVL10B}
+            CapturaPantalla
             Sleep    1
             RPA.SAP.Click Element    ${btnCheckTransaccion}
             RPA.SAP.Input Text    ${txtPtoExpedicPtoRecepcionVL10B}    ${centroOrigenMaterial}
             Sleep    1
+            CapturaPantalla
             RPA.SAP.Click Element    ${tablaPedidosComprasVL10B}
             Sleep    1
             RPA.SAP.Input Text    ${txtDocumentoComprasVL10B}    ${txtIdNumeroPedidoSAPME21N}
             RPA.SAP.Click Element    ${btnValidarStock}
+            CapturaPantalla
             Sleep    1
             RPA.Desktop.Click    coordinates:27,179    click
             RPA.SAP.Click Element    ${btnFondoVL10B}
@@ -125,26 +128,33 @@ RPA Validación y Proceso de traslado del material
             # Cerrar ventana impresora
             RPA.Desktop.Press Keys    alt    F4
             RPA.SAP.Click Element    ${btnVisualizarSuprimirEntregasVL10B}
+            CapturaPantalla
             Sleep    2
             RPA.Desktop.Click    coordinates:598,179    click
             Sleep    1
             ${obtenerIdNumeroVL10B} =    RPA.SAP.Get Value    ${idTransaccionVL10B}
+            CapturaPantalla
             CANTIDAD_CLICK_ELEMENTO_RPA_SAP    3    ${btnAtras}
             # ENTR. TRASL - VL02N
             RPA.Windows.Send Keys    keys=${transaccionVL02N}
             Sleep    1
+            CapturaPantalla
             RPA.SAP.Click Element    ${btnCheckTransaccion}
             RPA.SAP.Input Text    ${txtEntregaSalidaVL02N}    ${obtenerIdNumeroVL10B}
+            CapturaPantalla
             RPA.Windows.Send Keys    keys={ENTER}
             Sleep    1
             RPA.Desktop.Click    coordinates:32,379    click
+            CapturaPantalla
             CANTIDAD_CLICK_ELEMENTO_RPA_DESKTOP   1   up
             CANTIDAD_CLICK_ELEMENTO_RPA_DESKTOP   12  tab
             RPA.Desktop.Type Text  ${almacen}
+            CapturaPantalla
             RPA.Windows.Send Keys    keys={ENTER}  
             Sleep    1
             RPA.SAP.Click Element   ${menuDetallesVL02N} 
             RPA.SAP.Click Element   ${menuDetallesNumeroSerieVL02N}
+            CapturaPantalla
             RPA.Excel.Files.Open Workbook    ${pathExcel}
             ${row}=    RPA.Excel.Files.Read Worksheet    header=true
             ${next}=    RPA.Excel.Files.Find Empty Row
@@ -154,19 +164,22 @@ RPA Validación y Proceso de traslado del material
                 RPA.SAP.Input Text    /app/con[0]/ses[0]/wnd[1]/usr/tblSAPLIPW1TC_SERIAL_NUMBERS/ctxtRIPW0-SERNR[0,${counter-2}]      ${column}
             END
             RPA.Excel.Files.Close Workbook
+            CapturaPantalla
             RPA.SAP.Click Element    ${btnGrabarNumeroSerieVL02N}
             Sleep    1
             RPA.SAP.Click Element    ${btnContabilizarSimVL02N}
+            CapturaPantalla
             Sleep    1
             # Cerrar ventana impresora
             RPA.Desktop.Press Keys    alt    F4
             Sleep    1
             ${txtNumeroTrasladoVL02N} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
             ${numeroEntregaVL02N} =        RPA.SAP.Get Value    ${numeroEntregaSalidaVL02N}
-            Log    ${numeroEntregaVL02N}    console=True
+            CapturaPantalla
             CANTIDAD_CLICK_ELEMENTO_RPA_SAP    1    ${btnAtras}
             # ENTR. TRASL - MIGO
             RPA.Windows.Send Keys    keys=${transaccionMIGO}
+            CapturaPantalla
             Sleep    1
             RPA.SAP.Click Element    ${btnCheckTransaccion}
             Sleep    1
@@ -175,19 +188,46 @@ RPA Validación y Proceso de traslado del material
             RPA.SAP.Select From List By Label    ${cmbEntregaMIGO}    ${entregaMigo}
             Sleep    1
             RPA.SAP.Input Text    ${txtNumeroVL02NMIGO}    ${numeroEntregaVL02N}
+            CapturaPantalla
             RPA.Windows.Send Keys    keys={ENTER}
             Sleep    1
             RPA.SAP.Click Element    ${menuNumeroSerieMIGO}
+            CapturaPantalla
             Sleep    1
             RPA.SAP.Select Checkbox    ${chPosicionOkMIGO}
             Sleep    1
             RPA.SAP.Click Element    ${btnContabilizarMIGO}
             ${numDocumentoMaterialMigo} =        RPA.SAP.Get Value    ${numeroDocumentoMaterialMIGO}
+            CANTIDAD_CLICK_ELEMENTO_RPA_SAP    1    ${btnAtras}
+            # ENTR. TRASL - IQ09
+            RPA.Windows.Send Keys    keys=${transaccionIQ09}
+            CapturaPantalla
+            Sleep    1
+            RPA.SAP.Click Element    ${btnCheckTransaccion}
+            Sleep    1
+            RPA.SAP.Click Element    ${btnNumeroSerieIQ09}
+            RPA.Excel.Files.Open Workbook    ${pathExcel}
+            ${row}=    RPA.Excel.Files.Read Worksheet    header=true
+            ${next}=    RPA.Excel.Files.Find Empty Row
+            Log    ${row}    console=True
+            FOR    ${counter}    IN RANGE    2    ${next}
+                ${column}=    RPA.Excel.Files.Get cell value    ${counter}    A
+                RPA.SAP.Input Text    /app/con[0]/ses[0]/wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/txtRSCSEL_255-SLOW_I[1,${counter-2}]      ${column}
+            END
+            CapturaPantalla
+            Sleep    1
+            RPA.SAP.Click Element    ${btnGuardarNumerosSerieIQ09}
+            Sleep    1
+            RPA.SAP.Click Element    ${btnValidarStock}
+            Sleep    1
+            CapturaPantalla
+            CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
             RPA.FileSystem.Create File
             ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
             ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n ${txtNumeroPedidoSAP}\n\n\n Inicio Pedidos De Compras - ${transaccionVL10B}\n Pto.expedic/Pto.recepción: ${centroOrigenMaterial}\n DocumentoCompra: ${txtIdNumeroPedidoSAPME21N}\n\n NÚMERO DOCUMENTO COMERCIAL: ${obtenerIdNumeroVL10B}\n\n\n Entr.Traslado ${obtenerIdNumeroVL10B} - ${transaccionVL02N}\n ${txtNumeroTrasladoVL02N}\n\n\n Transacción ${transaccionMIGO}\n ${numDocumentoMaterialMigo}
             ...    encoding=utf-8
             ...    overwrite=True
+            CERRAR_APLICATIVO_SAP
         END
     ELSE
         RPA.FileSystem.Create File
