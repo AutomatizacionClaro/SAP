@@ -9,6 +9,8 @@ Library     RPA.SAP
 Library     RPA.Windows
 Library     RPA.FileSystem
 Library     RPA.Desktop
+Library     RPA.Tables
+Library     RPA.Excel.Files
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
@@ -136,19 +138,54 @@ RPA Validación y Proceso de traslado del material
             RPA.Windows.Send Keys    keys={ENTER}
             Sleep    1
             RPA.Desktop.Click    coordinates:32,379    click
-            #RPA.SAP.Click Element    ${tablaResumenPosicionesVL02N}
             CANTIDAD_CLICK_ELEMENTO_RPA_DESKTOP   1   up
             CANTIDAD_CLICK_ELEMENTO_RPA_DESKTOP   12  tab
             RPA.Desktop.Type Text  ${almacen}
             RPA.Windows.Send Keys    keys={ENTER}  
-            #RPA.SAP.Input Text    ${campoAlmacenVL02N}  ${almacen}
             Sleep    1
-            RPA.SAP.Select Context Menu Item    ${menuDetallesVL02N}   2    Números de serie
-            RPA.SAP.Click Element    ${menuDetallesVL02N}
-            RPA.SAP.Click Element    ${menuDetallesNumeroSerieVL02N}
+            RPA.SAP.Click Element   ${menuDetallesVL02N} 
+            RPA.SAP.Click Element   ${menuDetallesNumeroSerieVL02N}
+            RPA.Excel.Files.Open Workbook    ${pathExcel}
+            ${row}=    RPA.Excel.Files.Read Worksheet    header=true
+            ${next}=    RPA.Excel.Files.Find Empty Row
+            Log    ${row}    console=True
+            FOR    ${counter}    IN RANGE    2    ${next}
+                ${column}=    RPA.Excel.Files.Get cell value    ${counter}    A
+                RPA.SAP.Input Text    /app/con[0]/ses[0]/wnd[1]/usr/tblSAPLIPW1TC_SERIAL_NUMBERS/ctxtRIPW0-SERNR[0,${counter-2}]      ${column}
+            END
+            RPA.Excel.Files.Close Workbook
+            RPA.SAP.Click Element    ${btnGrabarNumeroSerieVL02N}
+            Sleep    1
+            RPA.SAP.Click Element    ${btnContabilizarSimVL02N}
+            Sleep    1
+            # Cerrar ventana impresora
+            RPA.Desktop.Press Keys    alt    F4
+            Sleep    1
+            ${txtNumeroTrasladoVL02N} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
+            ${numeroEntregaVL02N} =        RPA.SAP.Get Value    ${numeroEntregaSalidaVL02N}
+            Log    ${numeroEntregaVL02N}    console=True
+            CANTIDAD_CLICK_ELEMENTO_RPA_SAP    1    ${btnAtras}
+            # ENTR. TRASL - MIGO
+            RPA.Windows.Send Keys    keys=${transaccionMIGO}
+            Sleep    1
+            RPA.SAP.Click Element    ${btnCheckTransaccion}
+            Sleep    1
+            RPA.SAP.Select From List By Label    ${cmbEntregaSalidaMercanciaMIGO}    ${entradaMercanciasMigo}
+            Sleep    1
+            RPA.SAP.Select From List By Label    ${cmbEntregaMIGO}    ${entregaMigo}
+            Sleep    1
+            RPA.SAP.Input Text    ${txtNumeroVL02NMIGO}    ${numeroEntregaVL02N}
+            RPA.Windows.Send Keys    keys={ENTER}
+            Sleep    1
+            RPA.SAP.Click Element    ${menuNumeroSerieMIGO}
+            Sleep    1
+            RPA.SAP.Select Checkbox    ${chPosicionOkMIGO}
+            Sleep    1
+            RPA.SAP.Click Element    ${btnContabilizarMIGO}
+            ${numDocumentoMaterialMigo} =        RPA.SAP.Get Value    ${numeroDocumentoMaterialMIGO}
             RPA.FileSystem.Create File
             ...    ..\\SAP\\Resources\\rpa_validacion_traslado.txt
-            ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n ${txtNumeroPedidoSAP}\n\n\n Inicio Pedidos De Compras - ${transaccionVL10B}\n Pto.expedic/Pto.recepción: ${centroOrigenMaterial}\n DocumentoCompra: ${txtIdNumeroPedidoSAPME21N}\n\n NÚMERO DOCUMENTO COMERCIAL: ${obtenerIdNumeroVL10B}\n\n\n Entr.Traslado ${obtenerIdNumeroVL10B} - ${transaccionVL02N}
+            ...    content=Validación Stock traslado - ${transaccionMB52}\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroOrigenMaterial}\n LibreUtilización: ${txtLibreUtilizacion}\n\n\nInicio traslado material - ${transaccionME21N}\n Centro Origen: ${centroOrigenMaterial}\n Org.Compras: ${orgCompras} - ${textoOrgCompra}\n GrupoCompras: ${grupoCompras} - ${textoGrupoCompra}\n Sociedad: ${sociedad} - ${textoSociedad}\n\n Centro Destino: ${centroDestinoMaterial} - ${textoCavDestino}\n CodigoMaterial: ${codigoMaterial}\n CantidadPedidoMaterial: ${cantidadPedidoMaterial}\n\n ${txtNumeroPedidoSAP}\n\n\n Inicio Pedidos De Compras - ${transaccionVL10B}\n Pto.expedic/Pto.recepción: ${centroOrigenMaterial}\n DocumentoCompra: ${txtIdNumeroPedidoSAPME21N}\n\n NÚMERO DOCUMENTO COMERCIAL: ${obtenerIdNumeroVL10B}\n\n\n Entr.Traslado ${obtenerIdNumeroVL10B} - ${transaccionVL02N}\n ${txtNumeroTrasladoVL02N}\n\n\n Transacción ${transaccionMIGO}\n ${numDocumentoMaterialMigo}
             ...    encoding=utf-8
             ...    overwrite=True
         END

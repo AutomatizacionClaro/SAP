@@ -6,6 +6,7 @@ Resource    ../Keywords/transaccion_me21n.resource
 Resource    ../Keywords/transaccion_vl10b.resource
 Resource    ../Keywords/transaccion_vl02n.resource
 Resource    ../Keywords/transaccion_iq09.resource    
+Resource    ../Keywords/lectura_excel.resource    
 Resource    ../Keywords/rpa_validacion_traslado_material.resource
 Resource    ../Utils/funciones.resource
 
@@ -35,6 +36,9 @@ Transaccion VL10B - Pedidos de compras
 Crear Imeis
 # cantidadImei
   Crear IMEI  1
+
+Leer Excel
+  lectura_excel_prueba    
 
 Transaccion VL02N prueba
     abrir_sap

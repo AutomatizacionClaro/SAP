@@ -55,10 +55,21 @@ ${idTransaccionVL10B}                       /app/con[0]/ses[0]/wnd[0]/usr/subSUB
 
 # Ventana VL02N
 ${txtEntregaSalidaVL02N}                    ${nvaLoginSAP}/usr/ctxtLIKP-VBELN
-${tablaResumenPosicionesVL02N}              ${nvaLoginSAP}/usr/tabsTAXI_TABSTRIP_OVERVIEW/tabpT\01
+${tablasdffdVL02N}                          /app/con[0]/ses[0]/wnd[0]/usr/tabsTAXI_TABSTRIP_OVERVIEW/tabpT\01/ssubSUBSCREEN_BODY:SAPMV50A:1102/tblSAPMV50ATC_LIPS_OVER
 ${menuDetallesVL02N}                        /app/con[0]/ses[0]/wnd[0]/mbar/menu[3]
 ${menuDetallesNumeroSerieVL02N}             /app/con[0]/ses[0]/wnd[0]/mbar/menu[3]/menu[3]
-${campoAlmacenVL02N}                        /app/con[0]/ses[0]/wnd[0]/usr/tabsTAXI_TABSTRIP_OVERVIEW/tabpT\01/ssubSUBSCREEN_BODY:SAPMV50A:1102/tblSAPMV50ATC_LIPS_OVER/ctxtLIPS-LGORT[30,0]
+${btnGrabarNumeroSerieVL02N}                /app/con[0]/ses[0]/wnd[1]/tbar[0]/btn[0]
+${btnContabilizarSimVL02N}                  /app/con[0]/ses[0]/wnd[0]/tbar[1]/btn[20]
+${numeroEntregaSalidaVL02N}                 /app/con[0]/ses[0]/wnd[0]/usr/ctxtLIKP-VBELN
+
+# Transaccion MIGO
+${cmbEntregaSalidaMercanciaMIGO}            /app/con[0]/ses[0]/wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0003/subSUB_FIRSTLINE:SAPLMIGO:0010/cmbGODYNPRO-ACTION
+${cmbEntregaMIGO}                           /app/con[0]/ses[0]/wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0003/subSUB_FIRSTLINE:SAPLMIGO:0010/cmbGODYNPRO-REFDOC
+${txtNumeroVL02NMIGO}                       /app/con[0]/ses[0]/wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0003/subSUB_FIRSTLINE:SAPLMIGO:0010/subSUB_FIRSTLINE_REFDOC:SAPLMIGO:2040/ctxtGODYNPRO-OUTBOUND_DELIVERY
+${menuNumeroSerieMIGO}                      /app/con[0]/ses[0]/wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0003/subSUB_ITEMDETAIL:SAPLMIGO:0301/subSUB_DETAIL:SAPLMIGO:0300/tabsTS_GOITEM/tabpOK_GOITEM_SERIAL
+${chPosicionOkMIGO}                         /app/con[0]/ses[0]/wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0003/subSUB_ITEMDETAIL:SAPLMIGO:0301/subSUB_DETAIL:SAPLMIGO:0300/subSUB_DETAIL_TAKE:SAPLMIGO:0304/chkGODYNPRO-DETAIL_TAKE
+${btnContabilizarMIGO}                      /app/con[0]/ses[0]/wnd[0]/tbar[1]/btn[23]
+${numeroDocumentoMaterialMIGO}              /app/con[0]/ses[0]/wnd[0]/sbar/pane[0]
 
 # Ventana IQ09
 ${materialIq09}                            /app/con[0]/ses[0]/wnd[0]/usr/ctxtMATNR-LOW

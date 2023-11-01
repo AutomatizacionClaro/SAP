@@ -9,6 +9,8 @@ Library     RPA.SAP
 Library     RPA.Windows
 Library     RPA.FileSystem
 Library     RPA.Desktop
+Library     RPA.Tables
+Library     RPA.Excel.Files
 Resource    ../Variables/Constantes.resource
 Resource    ../Locators/locatorSAP.resource
 Resource    ../Scripts/Script.resource
@@ -30,4 +32,15 @@ transaccion_vl02n
     RPA.Windows.Send Keys    keys={ENTER}
     Sleep    1
     RPA.SAP.Click Element   ${menuDetallesVL02N} 
-    RPA.SAP.Click Element   ${menuDetallesNumeroSerieVL02N} 
+    RPA.SAP.Click Element   ${menuDetallesNumeroSerieVL02N}
+    RPA.Excel.Files.Open Workbook    ${pathExcel}
+    ${row}=    RPA.Excel.Files.Read Worksheet    header=true
+    ${next}=    RPA.Excel.Files.Find Empty Row
+    Log    ${row}    console=True
+    FOR    ${counter}    IN RANGE    2    ${next}
+        ${column}=    RPA.Excel.Files.Get cell value    ${counter}    A
+        RPA.SAP.Input Text    /app/con[0]/ses[0]/wnd[1]/usr/tblSAPLIPW1TC_SERIAL_NUMBERS/ctxtRIPW0-SERNR[0,${counter-2}]      ${column}
+    END
+    RPA.Excel.Files.Close Workbook
+    
+
