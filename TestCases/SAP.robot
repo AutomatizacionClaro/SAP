@@ -31,7 +31,7 @@ Transaccion VL10B - Pedidos de compras
 # por completar
     abrir_sap
     login_sap
-    transaccion_vl10b    C108  4201367423
+    vl10b - pedidos de compras    C108  4201367423
 
 Crear Imeis
 # cantidadImei

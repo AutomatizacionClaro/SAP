@@ -1,6 +1,6 @@
 *** Comments ***
-Validación pedidos de compras, visual.rápida
-
+Transaccion VL10B
+Esta transacción es la continuación de la transacción ME21N y genera un ID.
 
 *** Settings ***
 Library     RPA.SAP
@@ -14,15 +14,15 @@ Resource    ../Utils/funciones.resource
 
 
 *** Keywords ***
-transaccion_vl10b
-    [Arguments]    ${cavOrigen}    ${idPedidoMB52}
+vl10b - pedidos de compras
+    [Arguments]    ${cavOrigen}    ${idPedidoME21N}
     RPA.Windows.Send Keys    keys=${transaccionVL10B}
     RPA.SAP.Click Element    ${btnCheckTransaccion}
     RPA.SAP.Input Text    ${txtPtoExpedicPtoRecepcionVL10B}    ${cavOrigen}
     Sleep    1
     RPA.SAP.Click Element    ${tablaPedidosComprasVL10B}
     Sleep    1
-    RPA.SAP.Input Text    ${txtDocumentoComprasVL10B}    ${idPedidoMB52}
+    RPA.SAP.Input Text    ${txtDocumentoComprasVL10B}    ${idPedidoME21N}
     RPA.SAP.Click Element    ${btnValidarStock}
     RPA.Desktop.Click    coordinates:27,179    click
     Sleep    1
