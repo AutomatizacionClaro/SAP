@@ -1,7 +1,7 @@
 *** Comments ***
-Validación stock material transacción MB52
-Inicio traslado del material transacción ME21N
-Pedido de compras transacción VL10B
+Transacción IQ09
+Esta transacción permite realizar un filtro de todas las propiedades del material
+ejemplo: centro origen, almacen, imei, etc.
 
 
 *** Settings ***
@@ -18,25 +18,46 @@ Resource    ../Utils/funciones.resource
 
 
 *** Keywords ***
-transaccion_iq09
+iq09 - validacion material
+    [Arguments]    ${codigoMaterial}    ${cavOrigen}
     RPA.Windows.Send Keys    keys=${transaccionIQ09}
     Sleep    1
     RPA.SAP.Click Element    ${btnCheckTransaccion}
     CapturaPantalla
     Sleep    1
-    RPA.SAP.Input Text    ${materialIq09}    70048876
+    RPA.SAP.Input Text    ${materialIq09}    ${codigoMaterial}
     RPA.SAP.Input Text    ${txtStatusInclusivoIq09}    ${statusInclusivoIsq09}
-    RPA.SAP.Input Text    ${txtCentroIq09}    C108
-    RPA.SAP.Input Text    ${txtAlmacenIq09}    H001
+    RPA.SAP.Input Text    ${txtCentroIq09}    ${cavOrigen}
+    RPA.SAP.Input Text    ${txtAlmacenIq09}    ${almacen}
     RPA.SAP.Click Element    ${btnValidarStock}
     CapturaPantalla
     Sleep    1
-    # CANTIDAD_CLICK_ELEMENTO_RPA_DESKTOP    5    tab
-    # ${numeroSerieImei}=    RPA.SAP.Get Element Location    ${tablaIdIq09}
-    # ${numeroSerieImeiDos}=    RPA.SAP.Get Element Type    ${tablaIdIq09}
-    # Log    ${numeroSerieImei}    console=True
-    # Log    ${numeroSerieImeiDos}    console=True
-    # RPA.FileSystem.Read File    path
+    CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
+    CERRAR_APLICATIVO_SAP
 
-    # ${numeroDeSerie}=    RPA.SAP.Get Cell Value    ${tablaIdIq09}    2    5
-    # Log    ${numeroDeSerie}    console=True
+iq09 - confirmacion imeis excel
+    RPA.Windows.Send Keys    keys=${transaccionIQ09}
+    CapturaPantalla
+    Sleep    1
+    RPA.SAP.Click Element    ${btnCheckTransaccion}
+    Sleep    1
+    RPA.SAP.Click Element    ${btnNumeroSerieIQ09}
+    RPA.Excel.Files.Open Workbook    ${pathExcel}
+    ${row}=    RPA.Excel.Files.Read Worksheet    header=true
+    ${next}=    RPA.Excel.Files.Find Empty Row
+    Log    ${row}    console=True
+    FOR    ${counter}    IN RANGE    2    ${next}
+        ${column}=    RPA.Excel.Files.Get cell value    ${counter}    A
+        RPA.SAP.Input Text
+        ...    /app/con[0]/ses[0]/wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/txtRSCSEL_255-SLOW_I[1,${counter-2}]
+        ...    ${column}
+    END
+    CapturaPantalla
+    Sleep    1
+    RPA.SAP.Click Element    ${btnGuardarNumerosSerieIQ09}
+    Sleep    1
+    RPA.SAP.Click Element    ${btnValidarStock}
+    Sleep    1
+    CapturaPantalla
+    CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
+    CERRAR_APLICATIVO_SAP

@@ -45,11 +45,6 @@ Transaccion VL02N prueba
     login_sap
     transaccion_vl02n
 
-Transaccion IQ09 prueba
-    abrir_sap
-    login_sap
-    transaccion_iq09
-
 RPA Validación Stock y Traslado del material
 # Inserta: codigo_material - CAV_origen - Org_compras - grupo_compras - sociedad - cantidad_pedido - CAV_destino
     abrir_sap
