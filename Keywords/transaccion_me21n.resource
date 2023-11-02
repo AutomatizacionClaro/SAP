@@ -1,6 +1,7 @@
 *** Comments ***
-Inicio traslado del material transacción ME21N
-
+Transacción ME21N
+Esta transacción permite realizar el inicio de traslado de un material a otro centro destino
+generando un ID.
 
 *** Settings ***
 Library     RPA.SAP
@@ -15,7 +16,7 @@ Resource    ../Utils/funciones.resource
 
 
 *** Keywords ***
-transaccion_me21n
+me21n - inicio traslado material
     [Arguments]    ${centroOrigenMaterial}    ${orgCompras}    ${grupoCompras}    ${sociedad}
     ...    ${codigoMaterial}    ${cantidadPedidoMaterial}    ${centroDestinoMaterial}
     RPA.Windows.Send Keys    keys=${transaccionME21N}

@@ -25,7 +25,7 @@ Transaccion ME21N - Traslado Material SAP
 # Inserta: CAV_origen - Org_compras - grupo_compras - sociedad - codigo_material - cantidad_pedido - CAV_destino
     abrir_sap
     login_sap
-    transaccion_me21n    C108  CO06  T09  CO15  70048076  1  C127
+    me21n - inicio traslado material    C108  CO06  T09  CO15  70048076  1  C127
 
 Transaccion VL10B - Pedidos de compras
 # por completar
