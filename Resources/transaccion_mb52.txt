@@ -2,4 +2,4 @@ Transacción MB52 - Validación de Stock
 
  CódigoMaterial: 70048876
  CAV: C108
- LibreUtilización:              9
+ LibreUtilización:              7

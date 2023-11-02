@@ -1,5 +1,6 @@
 *** Comments ***
-Validación stock del material transacción MB52
+Transacción MB52
+Esta transacción permite validar el stock del material.
 
 
 *** Settings ***
@@ -14,7 +15,7 @@ Resource    ../Utils/funciones.resource
 
 
 *** Keywords ***
-transaccion_mb52
+mb52 - validar stock material
     [Arguments]    ${codigoMaterial}    ${centroCAV}
     TRY
         RPA.Windows.Send Keys    keys=${transaccionMB52}
