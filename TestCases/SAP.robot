@@ -4,11 +4,11 @@ Ejecución RPA Proceso traslado de material a un punto directo CAV
 Se debe de colocar la siguiente información:
 
  - RPA Traslado De Material A Un Punto Directo:
+    <codigo del material>
     <centro origen del material>
     <org Compras>
     <grupo compras>
     <sociedad>
-    <codigo del material>
     <cantidad pedido del material>
     <centro destino del material>
 
