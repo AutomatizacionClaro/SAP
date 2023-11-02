@@ -3,7 +3,7 @@ Ejecución Transacción VL10B
 
 Se debe de colocar la siguiente información:
 
- - Transaccion VL10B Validacion Stock
+ - Transaccion VL10B Pedido De Compras
     <centro origen del material>
     <ID generado del ME21N>
 

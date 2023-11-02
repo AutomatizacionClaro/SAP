@@ -1,7 +1,7 @@
 *** Comments ***
-Validación stock material transacción MB52
-Inicio traslado del material transacción ME21N
-Pedido de compras transacción VL10B
+Transacción VL02N
+Esta transacción es la continuación de la transaccion VL10B
+genera un ID
 
 
 *** Settings ***
@@ -18,11 +18,12 @@ Resource    ../Utils/funciones.resource
 
 
 *** Keywords ***
-transaccion_vl02n
+vl02n - entrada traslado
+    [Arguments]    ${idVL10B}
     RPA.Windows.Send Keys    keys=${transaccionVL02N}
     Sleep    1
     RPA.SAP.Click Element    ${btnCheckTransaccion}
-    RPA.SAP.Input Text    ${txtEntregaSalidaVL02N}    2101621270
+    RPA.SAP.Input Text    ${txtEntregaSalidaVL02N}    ${idVL10B}
     RPA.Windows.Send Keys    keys={ENTER}
     Sleep    1
     RPA.Desktop.Click    coordinates:32,379    click
@@ -42,5 +43,19 @@ transaccion_vl02n
         RPA.SAP.Input Text    /app/con[0]/ses[0]/wnd[1]/usr/tblSAPLIPW1TC_SERIAL_NUMBERS/ctxtRIPW0-SERNR[0,${counter-2}]      ${column}
     END
     RPA.Excel.Files.Close Workbook
+    CapturaPantalla
+    RPA.SAP.Click Element    ${btnGrabarNumeroSerieVL02N}
+    Sleep    1
+    RPA.SAP.Click Element    ${btnContabilizarSimVL02N}
+    CapturaPantalla
+    Sleep    1
+    # Cerrar ventana impresora
+    RPA.Desktop.Press Keys    alt    F4
+    Sleep    1
+    ${txtNumeroTrasladoVL02N} =    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
+    ${numeroEntregaVL02N} =        RPA.SAP.Get Value    ${numeroEntregaSalidaVL02N}
+    CapturaPantalla
+    CANTIDAD_CLICK_ELEMENTO_RPA_SAP    1    ${btnAtras}
+    CERRAR_APLICATIVO_SAP
     
 

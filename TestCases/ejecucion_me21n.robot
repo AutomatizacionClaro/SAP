@@ -3,7 +3,7 @@ Ejecución Transacción ME21N
 
 Se debe de colocar la siguiente información:
 
- - Transaccion ME21N Validacion Material:
+ - Transaccion ME21N Inicio Traslado Material:
     <centro origen del material>
     <org Compras>
     <grupo compras>

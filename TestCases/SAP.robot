@@ -43,7 +43,7 @@ Leer Excel
 Transaccion VL02N prueba
     abrir_sap
     login_sap
-    transaccion_vl02n
+    vl02n - entrada traslado   2101621270
 
 RPA Validación Stock y Traslado del material
 # Inserta: codigo_material - CAV_origen - Org_compras - grupo_compras - sociedad - cantidad_pedido - CAV_destino
