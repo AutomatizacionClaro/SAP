@@ -18,7 +18,7 @@ Resource    ../Utils/funciones.resource
 
 
 *** Keywords ***
-RPA Validación y Proceso de traslado del material
+rpa - traslado material a un punto directo 
     [Arguments]    ${codigoMaterial}
     ...    ${centroOrigenMaterial}    ${orgCompras}    ${grupoCompras}    ${sociedad}
     ...    ${cantidadPedidoMaterial}    ${centroDestinoMaterial}
