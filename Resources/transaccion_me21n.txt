@@ -1,14 +1,3 @@
 Transacción ME21N - Traslado material de un CAV a un punto directo
 
- Centro Origen: C108
- Org.Compras: CO06 - Comunicación Celular
- GrupoCompras: T13 - HANDSETS
- Sociedad: CO06 - Comunicación celular S.A
-
- Centro Destino: C100 - CAV BOGOTA CALLE 94
- CodigoMaterial: 70047935
- CantidadPedidoMaterial: 1
-
- Ejecución exitosa!
-
- Pedido de traslado creado bajo el número 4500595134
+ FALLIDO!

@@ -35,7 +35,7 @@ transaccion_mb52
         ...    content=Transacción MB52 - Validación de Stock\n\n CódigoMaterial: ${codigoMaterial}\n CAV: ${centroCAV}\n LibreUtilización: ${txtLibreUtilizacion}
         ...    encoding=utf-8
         ...    overwrite=True
-        CANTIDAD_CLICK_ELEMENTO    2    ${btnAtras}
+        CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
         CERRAR_APLICATIVO_SAP
     EXCEPT
         ${labelPanelSap}=    RPA.SAP.Get Value    ${panelNumeroPedidoSAP}
