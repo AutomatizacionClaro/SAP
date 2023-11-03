@@ -17,4 +17,4 @@ ${entregaMigo}                 Entrega
 # TransaccionISQ09
 ${statusInclusivoIsq09}        ALMA
 # Ruta Excel
-${pathExcel}=   D:/proyectos-vc/AutomationSAP/SAP/Resources/imeis_material.xlsx
+${pathExcel}=                  D:/proyectos-vc/AutomationSAP/SAP/Resources/imeis_material.xlsx

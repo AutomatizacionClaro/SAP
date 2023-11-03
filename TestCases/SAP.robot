@@ -1,19 +1,19 @@
 *** Comments ***
 Ejecución RPA Proceso traslado de material a un punto directo CAV
-
 Se debe de colocar la siguiente información:
 
- - RPA Traslado De Material A Un Punto Directo:
-    <codigo del material>
-    <centro origen del material>
-    <org Compras>
-    <grupo compras>
-    <sociedad>
-    <cantidad pedido del material>
-    <centro destino del material>
+RPA Traslado De Material A Un Punto Directo:
 
-    Ejemplo:
-    rpa - traslado material a un punto directo     70046968  C108  CO06  T09  CO15  2  C127
+"codigo del material" = 70046968
+"centro origen del material" = C108
+"org Compras" = CO06
+"grupo compras" = T09
+"sociedad" = CO15
+"cantidad pedido del material" = 2
+"centro destino del material" = C127
+
+Ejemplo:
+rpa - traslado material a un punto directo     70046968  C108  CO06  T09  CO15  2  C127
 
 *** Settings ***
 Resource  ../keywords/abrirSAP.resource
