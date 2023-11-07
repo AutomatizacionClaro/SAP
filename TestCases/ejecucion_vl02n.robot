@@ -3,11 +3,11 @@ Ejecución Transacción VL02N
 
 Se debe de colocar la siguiente información:
 
- - Transaccion VL02N Entrada Traslado
-    <id generado transaccion VL10B>
+Transaccion VL02N Entrada Traslado:
+"id generado transaccion VL10B" = 2101621270
 
-    Ejemplo:
-    vl02n - entrada traslado   2101621270
+Ejemplo:
+vl02n - entrada traslado   2101621270
 
 *** Settings ***
 Resource    ../keywords/abrirSAP.resource
