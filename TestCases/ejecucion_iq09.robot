@@ -2,13 +2,16 @@
 Ejecución Transacción IQ09
 
 contiene 2 casos de prueba, donde se debe de colocar la siguiente informacion:
- - Transaccion IQ09 Validacion Material: <código del material> , <centro origen del material>
-    por defecto la validación sera almacen:H001 y status inclusivo:Alma.
 
-    Ejemplo: iq09 - validacion material    70048076    C108
+Transaccion 1: IQ09 Validacion Material
+por defecto la validación sera almacen "H001" y status inclusivo:"Alma"
+"código del material" = 70048076
+"centro origen del material" = C108
+
+Ejemplo: iq09 - validacion material    70048076    C108
     
- - Transaccion IQ09 Confirmación Imeis Excel: agregar los imeis al archivo excel en 
-    resource/imeis_material.xlsx
+Transaccion 2: IQ09 Confirmación Imeis Excel 
+agregar los imeis al archivo excel en resource/imeis_material.xlsx
 
 
 *** Settings ***
