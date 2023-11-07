@@ -3,12 +3,12 @@ Ejecución Transacción VL10B
 
 Se debe de colocar la siguiente información:
 
- - Transaccion VL10B Pedido De Compras
-    <centro origen del material>
-    <ID generado del ME21N>
+Transaccion VL10B Pedido De Compras:
+"centro origen del material" = C108
+"ID generado del ME21N" = 4201367423
 
-    Ejemplo:
-    vl10b - pedidos de compras    C108  4201367423
+Ejemplo:
+vl10b - pedidos de compras    C108  4201367423
 
 *** Settings ***
 Resource    ../keywords/abrirSAP.resource
