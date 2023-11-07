@@ -1,7 +1,11 @@
 *** Comments ***
-Validación stock material transacción MB52
-Inicio traslado del material transacción ME21N
-Pedido de compras transacción VL10B
+RPA - Proceso de traslado del material a un punto directo
+Transacción 1: MB52 - Validación de stock
+Transacción 2: ME21N - Inicio traslado del material
+Transacción 3: VL10B - Pedidos de compras
+Transacción 4: VL02N - Modificar entrega de salida
+Transacción 5: MIGO - Entrada de mercancías entrega
+Transacción 6: IQ09 -  Visualización número serial
 
 
 *** Settings ***
@@ -19,9 +23,10 @@ Resource    ../Utils/funciones.resource
 
 *** Keywords ***
 rpa - traslado material a un punto directo 
-    [Arguments]    ${codigoMaterial}
-    ...    ${centroOrigenMaterial}    ${orgCompras}    ${grupoCompras}    ${sociedad}
+    [Arguments]  ${codigoMaterial}  ${centroOrigenMaterial}   ${orgCompras}    
+    ...    ${grupoCompras}  ${sociedad}
     ...    ${cantidadPedidoMaterial}    ${centroDestinoMaterial}
+    #Transacción 1: MB52 - Validación de stock
     RPA.Windows.Send Keys    keys=${transaccionMB52}
     Sleep    1
     RPA.SAP.Click Element    ${btnCheckTransaccion}
@@ -34,14 +39,14 @@ rpa - traslado material a un punto directo
     CapturaPantalla
     Sleep    1
     ${txtLibreUtilizacion} =    RPA.SAP.Get Value    ${txtLibreUtilizado}
+    # Validación MB52 validación existencia del material
     IF    ${txtLibreUtilizacion} != "0"
         CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
-        # INICIO TRASLADO MATERIAL ME21N
+        # Transacción 2: ME21N - Inicio traslado del material
         RPA.Windows.Send Keys    keys=${transaccionME21N}
         RPA.SAP.Click Element    ${btnCheckTransaccion}
         CapturaPantalla
         Sleep    2
-        # Lista carrito Pedido_traslado
         RPA.SAP.Select From List By Label    ${pedidoTrasladoME21N}    ${pedidoTraslado}
         Sleep    1
         RPA.SAP.Input Text    ${centroSuministradoME21N}    ${centroOrigenMaterial}
@@ -75,6 +80,7 @@ rpa - traslado material a un punto directo
         ${ElementoDireccionPresente} =    Run Keyword And Return Status
         ...    Element Should Be Present
         ...    ${opcionDireccionEntregaME21N}
+        # Validación ME21N pestaña dirección presente si existe
         IF    ${ElementoDireccionPresente} == $True
             RPA.SAP.Click Element    ${opcionDireccionEntregaME21N}
             ${textoCavDestino} =    RPA.SAP.Get Value    ${filaDireccionCavDestino}
@@ -83,6 +89,7 @@ rpa - traslado material a un punto directo
         RPA.SAP.Click Element    ${btnGrabarTransaccion}
         CapturaPantalla
         ${nombreBtnGrabar} =    RPA.SAP.Get Value    ${btnGrabarRetenerME21N}
+        # Validación ME21N Grabación de la transacción en caso de error
         IF    "${nombreBtnGrabar}" == "Reten."
             RPA.SAP.Click Element    ${btnGrabarTratarME21N}
             CapturaPantalla
@@ -107,7 +114,7 @@ rpa - traslado material a un punto directo
             ${txtIdNumeroPedidoSAPME21N} =    RPA.SAP.Get Value    ${numIdPedidoSAP}
             RPA.Desktop.Press Keys    alt    F4
             Sleep    1
-            # INICIO PEDIDO DE COMPRAS - VL10B
+            # Transacción 3: VL10B - Pedidos de compras
             CANTIDAD_CLICK_ELEMENTO_RPA_SAP    2    ${btnAtras}
             RPA.Windows.Send Keys    keys=${transaccionVL10B}
             CapturaPantalla
@@ -135,7 +142,7 @@ rpa - traslado material a un punto directo
             ${obtenerIdNumeroVL10B} =    RPA.SAP.Get Value    ${idTransaccionVL10B}
             CapturaPantalla
             CANTIDAD_CLICK_ELEMENTO_RPA_SAP    3    ${btnAtras}
-            # ENTR. TRASL - VL02N
+            # Transacción 4: VL02N - Modificar entrega de salida
             RPA.Windows.Send Keys    keys=${transaccionVL02N}
             Sleep    1
             CapturaPantalla
@@ -177,7 +184,7 @@ rpa - traslado material a un punto directo
             ${numeroEntregaVL02N} =        RPA.SAP.Get Value    ${numeroEntregaSalidaVL02N}
             CapturaPantalla
             CANTIDAD_CLICK_ELEMENTO_RPA_SAP    1    ${btnAtras}
-            # ENTR. TRASL - MIGO
+            # Transacción 5: MIGO - Entrada de mercancías entrega
             RPA.Windows.Send Keys    keys=${transaccionMIGO}
             CapturaPantalla
             Sleep    1
@@ -199,7 +206,7 @@ rpa - traslado material a un punto directo
             RPA.SAP.Click Element    ${btnContabilizarMIGO}
             ${numDocumentoMaterialMigo} =        RPA.SAP.Get Value    ${numeroDocumentoMaterialMIGO}
             CANTIDAD_CLICK_ELEMENTO_RPA_SAP    1    ${btnAtras}
-            # ENTR. TRASL - IQ09
+            # Transacción 6: IQ09 -  Visualización número serial
             RPA.Windows.Send Keys    keys=${transaccionIQ09}
             CapturaPantalla
             Sleep    1
