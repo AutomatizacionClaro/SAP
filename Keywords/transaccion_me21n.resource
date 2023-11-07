@@ -29,6 +29,7 @@ me21n - inicio traslado material
     CapturaPantalla
     Sleep    1
     RPA.Windows.Send Keys    keys={ENTER}
+    # Obtener los valores para el archivo txt
     RPA.SAP.Input Text    ${orgCompraME21N}    ${orgCompras}
     Sleep    1
     RPA.SAP.Input Text    ${grupoComprasME21N}    ${grupoCompras}
@@ -56,6 +57,7 @@ me21n - inicio traslado material
     ${ElementoPresente} =    Run Keyword And Return Status
     ...    Element Should Be Present
     ...    ${opcionDireccionEntregaME21N}
+    # Validación ME21N pestaña dirección presente si existe
     IF    ${ElementoPresente} == $True
         RPA.SAP.Click Element    ${opcionDireccionEntregaME21N}
         ${textoCavDestino} =    RPA.SAP.Get Value    ${filaDireccionCavDestino}
@@ -64,6 +66,7 @@ me21n - inicio traslado material
     RPA.SAP.Click Element    ${btnGrabarTransaccion}
     CapturaPantalla
     ${nombreBtnGrabar} =    RPA.SAP.Get Value    ${btnGrabarRetenerME21N}
+    # Validación ME21N Grabación de la transacción en caso de error
     IF    "${nombreBtnGrabar}" == "Reten."
         RPA.SAP.Click Element    ${btnGrabarTratarME21N}
         CapturaPantalla

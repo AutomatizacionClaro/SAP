@@ -3,17 +3,17 @@ Ejecución Transacción ME21N
 
 Se debe de colocar la siguiente información:
 
- - Transaccion ME21N Inicio Traslado Material:
-    <centro origen del material>
-    <org Compras>
-    <grupo compras>
-    <sociedad>
-    <codigo del material>
-    <cantidad pedido del material>
-    <centro destino del material>
+Transaccion ME21N Inicio Traslado Material:
+"centro origen del material" = C108
+"org Compras" = CO06
+"grupo compras" = T09
+"sociedad" = CO15
+"codigo del material" = 70048076
+"cantidad pedido del material" = 1
+"centro destino del material" = C127
 
-    Ejemplo:
-    me21n - inicio traslado material    C108  CO06  T09  CO15  70048076  1  C127
+Ejemplo:
+me21n - inicio traslado material    C108  CO06  T09  CO15  70048076  1  C127
 
 *** Settings ***
 Resource    ../keywords/abrirSAP.resource
