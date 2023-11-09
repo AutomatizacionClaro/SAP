@@ -37,10 +37,9 @@ vl02n - entrada traslado
     RPA.Excel.Files.Open Workbook    ${pathExcel}
     ${row}=    RPA.Excel.Files.Read Worksheet    header=true
     ${next}=    RPA.Excel.Files.Find Empty Row
-    Log    ${row}    console=True
-    FOR    ${counter}    IN RANGE    2    ${next}
+    FOR    ${counter}    IN RANGE    3    ${next}
         ${column}=    RPA.Excel.Files.Get cell value    ${counter}    A
-        RPA.SAP.Input Text    /app/con[0]/ses[0]/wnd[1]/usr/tblSAPLIPW1TC_SERIAL_NUMBERS/ctxtRIPW0-SERNR[0,${counter-2}]      ${column}
+        RPA.SAP.Input Text    /app/con[0]/ses[0]/wnd[1]/usr/tblSAPLIPW1TC_SERIAL_NUMBERS/ctxtRIPW0-SERNR[0,${counter-3}]      ${column}
     END
     RPA.Excel.Files.Close Workbook
     CapturaPantalla
