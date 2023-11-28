@@ -6,7 +6,7 @@ RPA Traslado De Material A Un Punto Directo:
 
 "codigo del material" = 70046968
 "centro origen del material" = C108
-"org Compras" = CO06
+"org compras" = CO06
 "grupo compras" = T09
 "sociedad" = CO15
 "cantidad pedido del material" = 2

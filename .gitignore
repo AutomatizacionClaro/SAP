@@ -158,9 +158,9 @@ cython_debug/
 # Ignore reports robotframework default
 *.html
 *.xml 
-log.html
-output.xml
-report.html
+rpa_validacion_traslado.txt
+transaccion_mb52.txt
+transaccion_me21n.txt
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
