@@ -1,11 +1,9 @@
-***settings***
-Library  RPA.SAP
-#Library  WhiteLibrary
-Library    RPA.Windows
+*** Settings ***
+# Library    WhiteLibrary
+Library     RPA.Windows
 
 
-***keywords***
-
+*** Keywords ***
 abrir_sap
-#   WhiteLibrary.Launch Application   saplogon.exe
-    Windows Run   saplogon.exe
+#    WhiteLibrary.Launch Application    saplogon.exe
+    Windows Run    saplogon.exe

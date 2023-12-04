@@ -1,9 +1,9 @@
 *** Settings ***
-Library    Screenshot    ..\\SAP\\Images
-Library    OperatingSystem
+Library     Screenshot    ..\\SAP\\Images
+Library     OperatingSystem
+
 
 *** Keywords ***
-Screenshot
+CapturaPantalla
     Sleep    1s
     Screenshot.Take Screenshot
-    
